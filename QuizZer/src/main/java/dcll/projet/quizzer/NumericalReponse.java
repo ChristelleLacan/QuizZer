@@ -21,5 +21,5 @@ public class NumericalReponse extends Question {
 	private double penalty;
 	private boolean shuffleanswers;
 	private boolean hidden;
-	
+	private String comment;
 }
