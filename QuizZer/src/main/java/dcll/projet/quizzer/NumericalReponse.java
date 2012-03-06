@@ -12,4 +12,7 @@ package dcll.projet.quizzer;
 
 
 public class NumericalReponse extends Question {
+	
+	private Question numerical;
+	private String text;
 }

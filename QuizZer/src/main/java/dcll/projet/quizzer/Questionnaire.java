@@ -14,5 +14,4 @@ import java.util.List;
 
 
 public class Questionnaire {
-	public List<Question> questions;
 }
