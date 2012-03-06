@@ -10,5 +10,6 @@ public class App
     {
         XmlToJava myParser = new XmlToJava();
         myParser.loadDocument();
+        myParser.run();
     }
 }
