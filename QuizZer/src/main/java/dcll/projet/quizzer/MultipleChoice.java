@@ -12,4 +12,9 @@ package dcll.projet.quizzer;
 
 
 public class MultipleChoice extends Question {
+	
+	private String text;
+	private boolean single;
+	private boolean shuffleanswers;
+	
 }
