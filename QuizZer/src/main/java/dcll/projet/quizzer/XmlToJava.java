@@ -50,9 +50,24 @@ public class XmlToJava {
 			// selectionner un noeud fils, modifier du texte, etc...
 			Element courant = (Element) i.next();
 			// On affiche le nom de l'element courant
-			System.out.println(courant.getAttributeValue("type"));
+			String typeQ = courant.getAttributeValue("type").trim();
+			System.out.println(typeQ);
+			if(typeQ.equals("multichoice")) {
+				xmlMultipleChoiceToJava(courant, quiz);
+			}
+			else{
+				System.out.println("Ce type de question n'est pas encore supporté");
+			}
 		}
 
+	}
+	
+	public void xmlMultipleChoiceToJava(Element e,Questionnaire quiz){
+		MultipleChoice myQuestion = new MultipleChoice();
+		
+		System.out.println("Traitement de MultipleChoice");
+		
+		//quiz.getQuestions().add(myQuestion);		
 	}
 
 }
