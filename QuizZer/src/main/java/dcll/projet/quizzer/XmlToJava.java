@@ -19,7 +19,7 @@ import org.jdom.input.SAXBuilder;
 public class XmlToJava {
 
 	private org.jdom.Document document;
-	private Element racine;
+	private static Element racine;
 
 	public void loadDocument() {
 		// On crée une instance de SAXBuilder
@@ -35,7 +35,6 @@ public class XmlToJava {
 		// document.
 		racine = document.getRootElement();
 	}
-
 	public void run() {
 		
 	}

@@ -1,5 +1,7 @@
 package dcll.projet.quizzer;
 
+import org.jdom.Element;
+
 //
 //
 //  @ Project : QuizZer
@@ -11,7 +13,16 @@ package dcll.projet.quizzer;
 
 
 public class TrueFalse extends Question {
-	//test 
+public String quiz;
+Element text, name,question;
+int type;
+	 //String name;
+	private String questionText,generalfeedback;
+	private int defaultgrade;
+	private double penalty;
+	private boolean shuffleanswers;
+	private boolean hidden;
+	private String comment;
 	
 	
 }
