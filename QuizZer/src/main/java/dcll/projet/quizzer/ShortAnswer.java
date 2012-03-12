@@ -11,10 +11,14 @@ public class ShortAnswer extends Question {
 
 	public ShortAnswer(String mName, String mQuestionText, int mDefaultgrade,
 			double mPenalty, boolean mShuffleanswers, boolean mHidden,
-			List<Answer> mAnswers) {
+			List<Answer> mAnswers, String mFormat) {
 		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
-				mAnswers);
+				mAnswers, mFormat);
 		type = "ShortAnswer";
+	}
+	
+	public String toString(){
+		return "Ceci est une shortAnswer : \n";
 	}
 	
 }

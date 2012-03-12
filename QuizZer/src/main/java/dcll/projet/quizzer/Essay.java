@@ -17,9 +17,9 @@ public class Essay extends Question {
 
 	public Essay(String mName, String mQuestionText, int mDefaultgrade,
 			double mPenalty, boolean mShuffleanswers, boolean mHidden,
-			List<Answer> mAnswers) {
+			List<Answer> mAnswers, String mFormat) {
 		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
-				mAnswers);
+				mAnswers, mFormat);
 		
 	}
 }

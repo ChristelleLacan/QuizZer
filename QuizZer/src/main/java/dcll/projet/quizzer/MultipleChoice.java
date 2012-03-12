@@ -19,9 +19,9 @@ public class MultipleChoice extends Question {
 	
 	public MultipleChoice(String mName, String mQuestionText,
 			int mDefaultgrade, double mPenalty, boolean mShuffleanswers,
-			boolean mHidden, List<Answer> mAnswers) {
+			boolean mHidden, List<Answer> mAnswers, String mFormat) {
 		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
-				mAnswers);
+				mAnswers, mFormat);
 		// TODO Auto-generated constructor stub
 	}
 
