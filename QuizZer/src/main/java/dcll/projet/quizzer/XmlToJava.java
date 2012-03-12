@@ -1,6 +1,7 @@
 package dcll.projet.quizzer;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -55,6 +56,9 @@ public class XmlToJava {
 			if(typeQ.equals("multichoice")) {
 				xmlMultipleChoiceToJava(courant, quiz);
 			}
+			if(typeQ.equals("shortanswer")) {
+				xmlShortAnswer(courant, quiz);
+			}
 			else{
 				System.out.println("Ce type de question n'est pas encore supporté");
 			}
@@ -63,11 +67,26 @@ public class XmlToJava {
 	}
 	
 	public void xmlMultipleChoiceToJava(Element e,Questionnaire quiz){
-		MultipleChoice myQuestion = new MultipleChoice();
+		//MultipleChoice myQuestion = new MultipleChoice();
 		
 		System.out.println("Traitement de MultipleChoice");
 		
 		//quiz.getQuestions().add(myQuestion);		
+	}
+	
+	public void xmlShortAnswer(Element e,Questionnaire quiz){
+		String name = e.getChild("name").getChildTextTrim("text");
+		String questionText = e.getChild("questiontext").getChildTextTrim("text");
+		String format = e.getChild("questiontext").getAttributeValue("format").trim();
+		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
+		double penalty =0.1;
+		boolean shuffleanswers = false;
+		boolean hidden =false;
+		List<Answer> answers = new ArrayList<Answer>();
+		String type = "Short Answer";
+		
+		ShortAnswer myQuestion = new ShortAnswer(name, questionText, defaultgrade, penalty, shuffleanswers, hidden, answers, format);
+		System.out.println(myQuestion);
 	}
 
 }
