@@ -10,10 +10,7 @@ import java.util.List;
 //
 //
 
-
 public class NumericalReponse extends Question {
-	
-	
 
 	private String text;
 	private String name;
@@ -24,31 +21,31 @@ public class NumericalReponse extends Question {
 	private boolean hidden;
 	private String comment;
 	private String type;
-	
+
 	public NumericalReponse(String mName, String mQuestionText,
 			int mDefaultgrade, double mPenalty, boolean mShuffleanswers,
 			boolean mHidden, List<Answer> mAnswers, String mFormat) {
-		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
-				mAnswers, mFormat);
+		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers,
+				mHidden, mAnswers, mFormat);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public double getPenalty() {
 		return penalty;
 	}
-	
+
 	public int getDefaultgrade() {
 		return defaultgrade;
 	}
-	
+
 	public boolean isHidden() {
 		return hidden;
 	}
-	
+
 	public String getComment() {
 		return comment;
 	}
-	
+
 	public String getText() {
 		return text;
 	}

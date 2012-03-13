@@ -16,15 +16,13 @@ public class MultipleChoice extends Question {
 	private String text;
 	private boolean single;
 	private boolean shuffleanswers;
-	
+
 	public MultipleChoice(String mName, String mQuestionText,
 			int mDefaultgrade, double mPenalty, boolean mShuffleanswers,
 			boolean mHidden, List<Answer> mAnswers, String mFormat) {
-		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
-				mAnswers, mFormat);
+		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers,
+				mHidden, mAnswers, mFormat);
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 }
