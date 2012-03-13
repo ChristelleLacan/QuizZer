@@ -1,4 +1,6 @@
 package dcll.projet.quizzer;
+
+import java.util.List;
 //
 //
 //  @ Project : QuizZer
@@ -11,6 +13,8 @@ package dcll.projet.quizzer;
 
 public class NumericalReponse extends Question {
 	
+	
+
 	private String text;
 	private String name;
 	private String questionText;
@@ -21,9 +25,12 @@ public class NumericalReponse extends Question {
 	private String comment;
 	private String type;
 	
-	public NumericalReponse(String mtype) {
-		super();
-		this.type=mtype;
+	public NumericalReponse(String mName, String mQuestionText,
+			int mDefaultgrade, double mPenalty, boolean mShuffleanswers,
+			boolean mHidden, List<Answer> mAnswers, String mFormat) {
+		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
+				mAnswers, mFormat);
+		// TODO Auto-generated constructor stub
 	}
 	
 	public double getPenalty() {
