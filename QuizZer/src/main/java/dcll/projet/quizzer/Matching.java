@@ -19,6 +19,11 @@ public class Matching extends Question {
 			List<Answer> mAnswers, String mFormat) {
 		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
 				mAnswers, mFormat);
+		type="Matching";
 		// TODO Auto-generated constructor stub
+	}
+	
+	public String toString(){
+		return "Ceci est : une Matching  \n";
 	}
 }

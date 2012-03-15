@@ -28,10 +28,14 @@ private String quiz ,text, name,question;
 			List<Answer> mAnswers, String mFormat) {
 		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
 				mAnswers, mFormat);
+		type="TrueFalse";
 		// TODO Auto-generated constructor stub
 	}
-	//test 
-//github.com/ChristelleLacan/QuizZer.git
+
+	
+	public String toString(){
+		return "Ceci est : une TrueFalse  \n";
+	}
 	
 	
 }
