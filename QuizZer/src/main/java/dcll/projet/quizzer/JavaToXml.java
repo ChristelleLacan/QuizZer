@@ -3,8 +3,6 @@ package dcll.projet.quizzer;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -17,9 +15,10 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class JavaToXml extends DefaultHandler{
 
-	private boolean inTruefalse,inAnswer,inText,inFeedback;
+	private boolean inQuestion,inAnswer,inText,inFeedback;
 	Answer answer;
 	String lecture;
+	int fract;
 	public void startDocument() {
 		System.out.println("******** DEBUT DOCUMENT *************");
 	}
@@ -35,7 +34,7 @@ public class JavaToXml extends DefaultHandler{
 					throws SAXException {
 		if(qName.equals("question") )
 			{
-			inTruefalse=true;
+			inQuestion=true;
 			answer=new Answer();
 			try{
 				String typ = attributes.getValue("truefalse");
@@ -49,10 +48,10 @@ public class JavaToXml extends DefaultHandler{
 			
 		
 			} 
-		else if(qName.equals("answer") && inTruefalse){
+		else if(qName.equals("answer") && inQuestion){
 			inAnswer=true;	
 			try{
-				int fract = Integer.parseInt(attributes.getValue("fraction"));
+				 fract = Integer.parseInt(attributes.getValue("fraction"));
 				answer.setFraction(fract);
 				System.out.println(qName+""+fract);
 			}catch(Exception e){
@@ -62,12 +61,12 @@ public class JavaToXml extends DefaultHandler{
 		
 			
 			}
-		else if(qName.equals("text") && inTruefalse){
+		else if(qName.equals("text") && inQuestion){
 			inText=true;	
 			System.out.println(qName+""+answer.getText());
 			
 			}
-		else if(qName.equals("feedback") && inTruefalse){
+		else if(qName.equals("feedback") && inQuestion){
 			inFeedback=true;	
 			System.out.println(qName+""+answer.getFeedback());
 			}
@@ -81,17 +80,17 @@ public class JavaToXml extends DefaultHandler{
 					throws SAXException {
 		if(qName.equals("question"))
 		{
-		inTruefalse=false;
+			inQuestion=false;
 		}
      
-		else if(qName.equals("answer") && inTruefalse){
+		else if(qName.equals("answer") && inQuestion){
 		
 	inAnswer=false;	
 	}
-		else if(qName.equals("text") && inTruefalse){
+		else if(qName.equals("text") && inQuestion){
 		inText=false;	
 		}
-		else if(qName.equals("feedback") && inTruefalse){
+		else if(qName.equals("feedback") && inQuestion){
 		inFeedback=false;	
 		}
 	//on passe à  la ligne
@@ -103,18 +102,18 @@ public class JavaToXml extends DefaultHandler{
 	    lecture=new String(ch,start,length);
 		System.out.print(" ( " + lecture.copyValueOf(ch,start,length)+ " ) ");
 		
-		if(inTruefalse){
+		if(inQuestion){
 			answer=new Answer();
 			answer.setQuestion(lecture);
 		}
-		else if(inAnswer && inTruefalse){
+		else if(inAnswer && inQuestion){
 			answer.setText(lecture);
 		}
-		else if(inAnswer && inTruefalse){
+		else if(inAnswer && inQuestion){
 			answer.setType(lecture);
 			
 		}
-		else if(inAnswer && inTruefalse){
+		else if(inAnswer && inQuestion){
 			answer.setFeedback(lecture);
 
 		}
