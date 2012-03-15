@@ -23,7 +23,7 @@ import org.jdom.input.SAXBuilder;
 public class XmlToJava {
 
 	private org.jdom.Document document;
-	private Element racine;
+	private static Element racine;
 
 	public void loadDocument() {
 		// On crée une instance de SAXBuilder
@@ -40,7 +40,6 @@ public class XmlToJava {
 		// document.
 		racine = document.getRootElement();
 	}
-
 	public void run() {
 		List questions = racine.getChildren("question");
 
@@ -61,6 +60,11 @@ public class XmlToJava {
 		}
 
 	}
+
+	
+	
+		
+
 
 	public void xmlToJavaQuestion(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
@@ -124,6 +128,7 @@ public class XmlToJava {
 			boolean shuffleanswers, boolean hidden, List<Answer> answers,
 			String type, Questionnaire quiz) {
 		// MultipleChoice myQuestion = new MultipleChoice();
+
 
 		System.out.println("Traitement de MultipleChoice");
 
