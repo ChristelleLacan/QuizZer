@@ -19,9 +19,13 @@ public class TrueFalse extends Question {
 			List<Answer> mAnswers, String mFormat) {
 		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
 				mAnswers, mFormat);
+		type="TrueFalse";
 		// TODO Auto-generated constructor stub
 	}
-	//test 
+	
+	public String toString(){
+		return "Ceci est : une TrueFalse  \n";
+	}
 	
 	
 }

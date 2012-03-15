@@ -20,6 +20,11 @@ public class Essay extends Question {
 			List<Answer> mAnswers, String mFormat) {
 		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
 				mAnswers, mFormat);
+		type="Essay";
 		
+	}
+	
+	public String toString(){
+		return "Ceci est : une Essay  \n";
 	}
 }
