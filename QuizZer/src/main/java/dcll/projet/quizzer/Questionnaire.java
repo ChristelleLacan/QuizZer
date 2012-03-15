@@ -10,8 +10,17 @@ import java.util.List;
 //
 //
 
-
-
-
 public class Questionnaire {
+	private String quizName;
+	private List<Question> questions;
+
+	public Questionnaire(String quizName, List<Question> questions) {
+		this.quizName = quizName;
+		this.questions = questions;
+	}
+
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
 }

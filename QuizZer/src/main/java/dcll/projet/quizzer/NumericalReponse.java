@@ -9,11 +9,8 @@ package dcll.projet.quizzer;
 //
 
 
-
-
 public class NumericalReponse extends Question {
 	
-	private Question numerical;
 	private String text;
 	private String name;
 	private String questionText;
@@ -22,4 +19,30 @@ public class NumericalReponse extends Question {
 	private boolean shuffleanswers;
 	private boolean hidden;
 	private String comment;
+	private String type;
+	
+	public NumericalReponse(String mtype) {
+		super();
+		this.type=mtype;
+	}
+	
+	public double getPenalty() {
+		return penalty;
+	}
+	
+	public int getDefaultgrade() {
+		return defaultgrade;
+	}
+	
+	public boolean isHidden() {
+		return hidden;
+	}
+	
+	public String getComment() {
+		return comment;
+	}
+	
+	public String getText() {
+		return text;
+	}
 }

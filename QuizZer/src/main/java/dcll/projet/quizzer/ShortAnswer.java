@@ -1,15 +1,24 @@
 package dcll.projet.quizzer;
-//
-//
-//  @ Project : QuizZer
-//  @ File Name : ShortAnswer.java
-//  @ Date : 05/03/2012
-//  @ Author : Clement Bardou
-//
-//
 
+import java.util.List;
 
-
-
+/**
+ * 
+ * @author etu2
+ *
+ */
 public class ShortAnswer extends Question {
+
+	public ShortAnswer(String mName, String mQuestionText, int mDefaultgrade,
+			double mPenalty, boolean mShuffleanswers, boolean mHidden,
+			List<Answer> mAnswers, String mFormat) {
+		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
+				mAnswers, mFormat);
+		type = "ShortAnswer";
+	}
+	
+	public String toString(){
+		return "Ceci est une shortAnswer : \n";
+	}
+	
 }

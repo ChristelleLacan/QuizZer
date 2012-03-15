@@ -1,6 +1,6 @@
 package dcll.projet.quizzer;
 
-import org.jdom.Element;
+import java.util.List;
 
 //
 //
@@ -13,16 +13,25 @@ import org.jdom.Element;
 
 
 public class TrueFalse extends Question {
-public String quiz;
-Element text, name,question;
-int type;
-	 //String name;
+private String quiz ,text, name,question;
+
 	private String questionText,generalfeedback;
 	private int defaultgrade;
 	private double penalty;
 	private boolean shuffleanswers;
 	private boolean hidden;
 	private String comment;
+
+
+	public TrueFalse(String mName, String mQuestionText, int mDefaultgrade,
+			double mPenalty, boolean mShuffleanswers, boolean mHidden,
+			List<Answer> mAnswers, String mFormat) {
+		super(mName, mQuestionText, mDefaultgrade, mPenalty, mShuffleanswers, mHidden,
+				mAnswers, mFormat);
+		// TODO Auto-generated constructor stub
+	}
+	//test 
+//github.com/ChristelleLacan/QuizZer.git
 	
 	
 }
