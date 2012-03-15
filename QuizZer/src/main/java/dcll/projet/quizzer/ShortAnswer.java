@@ -18,7 +18,7 @@ public class ShortAnswer extends Question {
 	}
 	
 	public String toString(){
-		return "Ceci est une shortAnswer : \n";
+		return super.toString()+"Ceci est une shortAnswer : \n";
 	}
 	
 }

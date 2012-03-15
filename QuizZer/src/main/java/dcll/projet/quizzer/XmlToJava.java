@@ -1,6 +1,5 @@
 package dcll.projet.quizzer;
 
-import java.io.File;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
