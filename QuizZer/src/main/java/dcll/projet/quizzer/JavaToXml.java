@@ -19,6 +19,7 @@ public class JavaToXml extends DefaultHandler{
 	Answer answer;
 	String lecture;
 	int fract;
+	
 	public void startDocument() {
 		System.out.println("******** DEBUT DOCUMENT *************");
 	}
