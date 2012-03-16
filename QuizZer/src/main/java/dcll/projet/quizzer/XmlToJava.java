@@ -64,15 +64,20 @@ public class XmlToJava {
 				xmlMultipleChoiceToJava(courant, quiz);
 			}
 			if (type.equals("shortanswer")) {
-				xmlShortAnswerJava(courant, quiz);
+				xmlShortAnswerToJava(courant, quiz);
+			}
+			if (type.equals("essay")) {
+				xmlEssayToJava(courant, quiz);
 			}
 		}
 		System.out.println(quiz.toString());
 
 	}
 
+
+
 	// Gestion des reponses
-	public Answer xmlToJavaAnswer(Element e) {
+	public Answer xmlAnswerToJava(Element e) {
 		String text = e.getChildTextTrim("text");
 		float fraction = Float.parseFloat(e.getAttributeValue("fraction").trim());
 		String feedback = e.getChild("feedback").getChildTextTrim("text");
@@ -83,7 +88,28 @@ public class XmlToJava {
 	
 	//Gestion de xml vers java : DESCRIPTION
 	public void xmlDescriptionToJava(Element e, Questionnaire quizz) {
+		String name = e.getChild("name").getChildTextTrim("text");
+		String questionText = e.getChild("questiontext").getChildTextTrim(
+				"text");
+		String format = e.getChild("questiontext").getAttributeValue("format")
+				.trim();
+		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
+		NumberFormat myFormat = NumberFormat.getInstance();
+		double penalty = 0;
+		try {
+			penalty = myFormat.parse(e.getChildTextTrim("penalty"))
+					.doubleValue();
+		} catch (ParseException e1) {
+			System.out.println("Erreur Format de penalty : " + e1);
+		}
+
+		boolean shuffleanswers = Boolean.valueOf(
+				e.getChildTextTrim("shuffleanswers")).booleanValue();
+		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
+				.booleanValue();
 		
+		//Description myQuestion = new Description();
+		//quiz.getQuestions().add(myQuestion);
 	}
 
 	// Gestion de xml vers java : MULTIPLE CHOICE
@@ -110,22 +136,19 @@ public class XmlToJava {
 		
 		List<Answer> answers = new ArrayList<Answer>();
 		List answersRes = e.getChildren("answer");
-		System.out.println(answersRes);
-
 		Iterator i = answersRes.iterator();
 		// parcours toutes les réponses
 		while (i.hasNext()) {
 			Element courant = (Element) i.next();
-			answers.add(xmlToJavaAnswer(courant));
+			answers.add(xmlAnswerToJava(courant));
 		}
 		
-		MultipleChoice myQuestion = new MultipleChoice(name, questionText, defaultgrade, penalty, shuffleanswers, hidden, answersRes, format);
-		
-		quiz.getQuestions().add(myQuestion);
+//		MultipleChoice myQuestion = new MultipleChoice(name, questionText, defaultgrade, penalty, shuffleanswers, hidden, answers, format);		
+//		quiz.getQuestions().add(myQuestion);
 	}
 
 	// Gestion de xml vers java : SHORT ANSWER
-	public void xmlShortAnswerJava(Element e, Questionnaire quiz) {
+	public void xmlShortAnswerToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
 				"text");
@@ -141,24 +164,44 @@ public class XmlToJava {
 		List<Answer> answers = new ArrayList<Answer>();
 
 		List answersRes = e.getChildren("answer");
-		System.out.println(answersRes);
-
 		Iterator i = answersRes.iterator();
 		// parcours toutes les réponses
 		while (i.hasNext()) {
 			Element courant = (Element) i.next();
-			answers.add(xmlToJavaAnswer(courant));
+			answers.add(xmlAnswerToJava(courant));
 		}
 
 		// CREATION DE L'OBJET SHORT ANSWER
 		ShortAnswer myQuestion = new ShortAnswer(name, questionText,
 				defaultgrade, penalty, shuffleanswers, hidden, answers, format);
-
-		// AFFICHAGE DE CET OBJET
-		//System.out.println(myQuestion);
-
 		quiz.getQuestions().add(myQuestion);
+	}
+	
+	private void xmlEssayToJava(Element e, Questionnaire quiz) {
+		String name = e.getChild("name").getChildTextTrim("text");
+		String questionText = e.getChild("questiontext").getChildTextTrim(
+				"text");
+		String format = e.getChild("questiontext").getAttributeValue("format")
+				.trim();
+		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
+		NumberFormat myFormat = NumberFormat.getInstance();
+		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
+		boolean shuffleanswers = Boolean.valueOf(
+				e.getChildTextTrim("shuffleanswers")).booleanValue();
+		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
+				.booleanValue();
+		List<Answer> answers = new ArrayList<Answer>();
+
+		List answersRes = e.getChildren("answer");
+		Iterator i = answersRes.iterator();
+		// parcours toutes les réponses
+		while (i.hasNext()) {
+			Element courant = (Element) i.next();
+			answers.add(xmlAnswerToJava(courant));
+		}
 		
+//		Essay myQuestion = new Essay(name, questionText, defaultgrade, penalty, shuffleanswers, hidden, answers, format);
+//		quiz.getQuestions().add(myQuestion);
 	}
 
 }
