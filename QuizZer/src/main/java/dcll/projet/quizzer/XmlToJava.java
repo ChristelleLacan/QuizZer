@@ -60,6 +60,9 @@ public class XmlToJava {
 			if (type.equals("cloze")) {
 
 			}
+			if (type.equals("multichoice")) {
+				xmlMultipleChoiceToJava(courant, quiz);
+			}
 			if (type.equals("shortanswer")) {
 				xmlShortAnswerJava(courant, quiz);
 			}
@@ -71,16 +74,20 @@ public class XmlToJava {
 	// Gestion des reponses
 	public Answer xmlToJavaAnswer(Element e) {
 		String text = e.getChildTextTrim("text");
-		int fraction = Integer.parseInt(e.getAttributeValue("fraction").trim());
+		float fraction = Float.parseFloat(e.getAttributeValue("fraction").trim());
 		String feedback = e.getChild("feedback").getChildTextTrim("text");
 		Answer a = new Answer(text, fraction, feedback);
 		//System.out.println("Voici les reponces : " + a);
 		return a;
 	}
+	
+	//Gestion de xml vers java : DESCRIPTION
+	public void xmlDescriptionToJava(Element e, Questionnaire quizz) {
+		
+	}
 
 	// Gestion de xml vers java : MULTIPLE CHOICE
-	public void xmlMultipleChoiceToJava(Element e, Questionnaire quiz) {
-		// MultipleChoice myQuestion = new MultipleChoice();
+	public void xmlMultipleChoiceToJava(Element e, Questionnaire quiz) { 
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
 				"text");
@@ -100,12 +107,21 @@ public class XmlToJava {
 				e.getChildTextTrim("shuffleanswers")).booleanValue();
 		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
 				.booleanValue();
-
+		
 		List<Answer> answers = new ArrayList<Answer>();
+		List answersRes = e.getChildren("answer");
+		System.out.println(answersRes);
 
-		System.out.println("Traitement de MultipleChoice");
-
-		// quiz.getQuestions().add(myQuestion);
+		Iterator i = answersRes.iterator();
+		// parcours toutes les réponses
+		while (i.hasNext()) {
+			Element courant = (Element) i.next();
+			answers.add(xmlToJavaAnswer(courant));
+		}
+		
+		MultipleChoice myQuestion = new MultipleChoice(name, questionText, defaultgrade, penalty, shuffleanswers, hidden, answersRes, format);
+		
+		quiz.getQuestions().add(myQuestion);
 	}
 
 	// Gestion de xml vers java : SHORT ANSWER
@@ -117,21 +133,13 @@ public class XmlToJava {
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
 		NumberFormat myFormat = NumberFormat.getInstance();
-		double penalty = 0;
-		try {
-			penalty = myFormat.parse(e.getChildTextTrim("penalty"))
-					.doubleValue();
-		} catch (ParseException e1) {
-			System.out.println("Erreur Format de penalty : " + e1);
-		}
-
+		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
 		boolean shuffleanswers = Boolean.valueOf(
 				e.getChildTextTrim("shuffleanswers")).booleanValue();
 		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
 				.booleanValue();
 		List<Answer> answers = new ArrayList<Answer>();
 
-		// A TESTER
 		List answersRes = e.getChildren("answer");
 		System.out.println(answersRes);
 
