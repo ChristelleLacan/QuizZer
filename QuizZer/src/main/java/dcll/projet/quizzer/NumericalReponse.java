@@ -23,7 +23,7 @@ public class NumericalReponse extends Question {
 	}
 	
 	public String toString(){
-		return "Ceci est : une NumericalReponse  \n";
+		return "\n----Ceci est : une NumericalReponse  \n";
 	}
 
 }

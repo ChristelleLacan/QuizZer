@@ -40,33 +40,76 @@ public class XmlToJava {
 		// document.
 		racine = document.getRootElement();
 	}
-	public void run() {
-		List questions = racine.getChildren("question");
 
+	public void run() {
+		List questionsXML = racine.getChildren("question");
+
+		ArrayList<Question> questions = new ArrayList<Question>();
 		Questionnaire quiz = new Questionnaire("MyQuiz", questions);
 
 		// On crée un Iterator sur notre liste
-		Iterator i = questions.iterator();
+		Iterator i = questionsXML.iterator();
 		i.next();// on saute le premier element catégorie
 		while (i.hasNext()) {
 			// On recrée l'Element courant à chaque tour de boucle afin de
 			// pouvoir utiliser les méthodes propres aux Element comme :
 			// selectionner un noeud fils, modifier du texte, etc...
 			Element courant = (Element) i.next();
-			if (courant.getAttributeValue("type").trim().equals("cloze")) {
+			String type = courant.getAttributeValue("type").trim();
+			//System.out.println(type);
+			if (type.equals("cloze")) {
 
-			} else
-				xmlToJavaQuestion(courant, quiz);
+			}
+			if (type.equals("shortanswer")) {
+				xmlShortAnswerJava(courant, quiz);
+			}
 		}
+		System.out.println(quiz.toString());
 
 	}
 
-	
-	
-		
+	// Gestion des reponses
+	public Answer xmlToJavaAnswer(Element e) {
+		String text = e.getChildTextTrim("text");
+		int fraction = Integer.parseInt(e.getAttributeValue("fraction").trim());
+		String feedback = e.getChild("feedback").getChildTextTrim("text");
+		Answer a = new Answer(text, fraction, feedback);
+		//System.out.println("Voici les reponces : " + a);
+		return a;
+	}
 
+	// Gestion de xml vers java : MULTIPLE CHOICE
+	public void xmlMultipleChoiceToJava(Element e, Questionnaire quiz) {
+		// MultipleChoice myQuestion = new MultipleChoice();
+		String name = e.getChild("name").getChildTextTrim("text");
+		String questionText = e.getChild("questiontext").getChildTextTrim(
+				"text");
+		String format = e.getChild("questiontext").getAttributeValue("format")
+				.trim();
+		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
+		NumberFormat myFormat = NumberFormat.getInstance();
+		double penalty = 0;
+		try {
+			penalty = myFormat.parse(e.getChildTextTrim("penalty"))
+					.doubleValue();
+		} catch (ParseException e1) {
+			System.out.println("Erreur Format de penalty : " + e1);
+		}
 
-	public void xmlToJavaQuestion(Element e, Questionnaire quiz) {
+		boolean shuffleanswers = Boolean.valueOf(
+				e.getChildTextTrim("shuffleanswers")).booleanValue();
+		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
+				.booleanValue();
+
+		List<Answer> answers = new ArrayList<Answer>();
+
+		System.out.println("Traitement de MultipleChoice");
+
+		// quiz.getQuestions().add(myQuestion);
+	}
+
+	// Gestion de xml vers java : SHORT ANSWER
+	public void xmlShortAnswerJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
 				"text");
@@ -88,61 +131,26 @@ public class XmlToJava {
 				.booleanValue();
 		List<Answer> answers = new ArrayList<Answer>();
 
-		String type = e.getAttributeValue("type").trim();
-		System.out.println(type);
-		if (type.equals("multichoice")) {
-			xmlMultipleChoiceToJava(name, questionText, format, defaultgrade,
-					penalty, shuffleanswers, hidden, answers, type, quiz);
+		// A TESTER
+		List answersRes = e.getChildren("answer");
+		System.out.println(answersRes);
+
+		Iterator i = answersRes.iterator();
+		// parcours toutes les réponses
+		while (i.hasNext()) {
+			Element courant = (Element) i.next();
+			answers.add(xmlToJavaAnswer(courant));
 		}
-		if (type.equals("shortanswer")) {
-			//recupère toutes les réponses 
-			List answersRes = e.getChildren("answer");
-			
-			Iterator j = answers.iterator();
-			j.next();
-			//parcours toutes les réponses
-			while (j.hasNext()) {
-				Element courant = (Element) j.next();
-				answers.add(xmlToJavaAnswer(courant));
-			}
-			xmlShortAnswer(name, questionText, format, defaultgrade, penalty,
-					shuffleanswers, hidden, answers, type, quiz);
-		} else {
-			System.out.println("Ce type de question n'est pas encore supporté");
-		}
-	}
 
-	public Answer xmlToJavaAnswer(Element e) {
-		String text = e.getChild("answer").getChildTextTrim("text");
-		int fraction = Integer.parseInt(e.getChild("answer")
-				.getAttributeValue("fraction").trim());
-		String feedback = e.getChild("answer").getChild("feedback")
-				.getChildTextTrim("text");
-		Answer a = new Answer(text, fraction, feedback);
-		System.out.println("Voici les reponces : "+a);
-		return a;
-	}
-
-	public void xmlMultipleChoiceToJava(String name, String questionText,
-			String format, int defaultgrade, double penalty,
-			boolean shuffleanswers, boolean hidden, List<Answer> answers,
-			String type, Questionnaire quiz) {
-		// MultipleChoice myQuestion = new MultipleChoice();
-
-
-		System.out.println("Traitement de MultipleChoice");
-
-		// quiz.getQuestions().add(myQuestion);
-	}
-
-	public void xmlShortAnswer(String name, String questionText, String format,
-			int defaultgrade, double penalty, boolean shuffleanswers,
-			boolean hidden, List<Answer> answers, String type,
-			Questionnaire quiz) {
-
+		// CREATION DE L'OBJET SHORT ANSWER
 		ShortAnswer myQuestion = new ShortAnswer(name, questionText,
 				defaultgrade, penalty, shuffleanswers, hidden, answers, format);
-		System.out.println(myQuestion);
+
+		// AFFICHAGE DE CET OBJET
+		//System.out.println(myQuestion);
+
+		quiz.getQuestions().add(myQuestion);
+		
 	}
 
 }

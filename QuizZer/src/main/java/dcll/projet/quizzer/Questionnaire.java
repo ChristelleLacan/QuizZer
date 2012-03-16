@@ -1,6 +1,6 @@
 package dcll.projet.quizzer;
 
-import java.util.List;
+import java.util.ArrayList;
 //
 //
 //  @ Project : QuizZer
@@ -12,15 +12,20 @@ import java.util.List;
 
 public class Questionnaire {
 	private String quizName;
-	private List<Question> questions;
+	private ArrayList<Question> questions = new ArrayList<Question>();
 
-	public Questionnaire(String quizName, List<Question> questions) {
+	public Questionnaire(String quizName, ArrayList<Question> questions) {
 		this.quizName = quizName;
 		this.questions = questions;
 	}
 
-	public List<Question> getQuestions() {
+	public ArrayList<Question> getQuestions() {
 		return questions;
 	}
+	
+	public String toString() {
+		return "Quiz name : "+quizName +" \n\nQuestions : \n"+questions.toString();
+	}
+	
 
 }

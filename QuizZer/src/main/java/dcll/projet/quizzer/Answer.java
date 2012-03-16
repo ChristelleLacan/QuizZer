@@ -45,7 +45,7 @@ public class Answer {
 	}
 	
 	public String toString(){
-		return "Text : "+ text + 
+		return "\n--Text : "+ text + 
 				"\t Fraction : "+fraction + 
 				"\t Feedback : "+feedback;
 	}

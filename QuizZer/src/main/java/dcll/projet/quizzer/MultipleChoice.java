@@ -24,7 +24,7 @@ public class MultipleChoice extends Question {
 	}
 	
 	public String toString(){
-		return "Ceci est : une MultipleChoice  \n";
+		return "\n----Ceci est : une MultipleChoice  \n";
 	}
 
 }
