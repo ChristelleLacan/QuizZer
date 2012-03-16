@@ -34,7 +34,7 @@ private String quiz ,text, name,question;
 
 	
 	public String toString(){
-		return "\n----Ceci est : une TrueFalse  \n";
+		return "\n----Ceci est : une TrueFalse  \n"+super.toString();
 	}
 	
 	

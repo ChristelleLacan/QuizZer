@@ -22,9 +22,8 @@ public class MultipleChoice extends Question {
 		type="MultipleChoice";
 		// TODO Auto-generated constructor stub
 	}
-	
-	public String toString(){
-		return "\n----Ceci est : une MultipleChoice  \n";
-	}
 
+	public String toString(){
+		return "\n----Ceci est une MultipleChoice : \n"+super.toString();
+	}
 }

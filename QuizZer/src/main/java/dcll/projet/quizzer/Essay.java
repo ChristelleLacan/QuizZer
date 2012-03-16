@@ -25,6 +25,6 @@ public class Essay extends Question {
 	}
 	
 	public String toString(){
-		return "\n----Ceci est : une Essay  \n";
+		return "\n----Ceci est : une Essay  \n"+super.toString();
 	}
 }

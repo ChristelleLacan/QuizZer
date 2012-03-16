@@ -18,4 +18,44 @@ public class Answer {
 				"\t Fraction : "+fraction + 
 				"\t Feedback : "+feedback;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public float getFraction() {
+		return fraction;
+	}
+
+	public void setFraction(float fraction) {
+		this.fraction = fraction;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
 }
