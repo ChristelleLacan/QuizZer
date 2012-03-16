@@ -15,7 +15,7 @@ public class Category extends Question {
 		}
 
 		public String toString(){
-			return "\n----Ceci est une Category : \n"+
+			return "\n----Ceci est une "+ type +" : \n"+
 					"category : "+category+"\n";
 		}
 

@@ -18,15 +18,14 @@ public class Matching extends Question {
 	private double penalty;
 	private boolean hidden;
 	private boolean shuffleAnswers;
-	private List<Answer> answers = new ArrayList<Answer>();
 	private String type;
 	private String image;
-	private byte[] image_64;
+	private String image_64;
 	private List<SubQuestion> subQuestions = new ArrayList<SubQuestion>();
 
 	public Matching(String mName, String mQuestionText, int mDefaultgrade,
 			double mPenalty, boolean mShuffleanswers, boolean mHidden,
-			String mFormat, String mImage, byte[] mImage_64,
+			String mFormat, String mImage, String mImage_64,
 			List<SubQuestion> mSubQuestions) {
 		super(mName);
 		type = "Matching";
@@ -35,18 +34,18 @@ public class Matching extends Question {
 		defaultGrade = mDefaultgrade;
 		penalty = mPenalty;
 		hidden = mHidden;
-		type = "Essay";
 		image = mImage;
 		image_64 = mImage_64;
 		subQuestions = mSubQuestions;
 	}
 
 	public String toString() {
-		return "\n----Ceci est : une Matching  \n" + super.toString()
+		return "\n----Ceci est : une "+ type +"  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade
 				+ "\n" + "penalty : " + penalty + "\n" + "shuffleanswers : "
 				+ shuffleAnswers + "\n" + "hidden : " + hidden + "\n"
 				+ "questionsText : " + questionText + "\n" + "image : " + image
-				+ "\n" + "subQuestions : " + subQuestions.toString() + "\n";
+				+ "\n" + "image_64 : " + image_64 + "\nsubQuestions : "
+				+ subQuestions.toString() + "\n";
 	}
 }

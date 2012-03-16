@@ -6,17 +6,16 @@ public class Answer {
 	private float fraction;
 	private String feedback;
 	private String text;
-	
+
 	public Answer(String text, float fraction, String feedback) {
 		this.text = text;
 		this.fraction = fraction;
 		this.feedback = feedback;
 	}
-	
-	public String toString(){
-		return "\n--Text : "+ text + 
-				"\t Fraction : "+fraction + 
-				"\t Feedback : "+feedback;
+
+	public String toString() {
+		return "\n--Text : " + text + "\n\t\t Fraction : " + fraction
+				+ "\n\t\t Feedback : " + feedback;
 	}
 
 	public String getType() {

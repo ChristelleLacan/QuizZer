@@ -42,12 +42,13 @@ public class TrueFalse extends Question {
 	}
 
 	public String toString() {
-		return "\n----Ceci est : une TrueFalse  \n" + super.toString()
+		return "\n----Ceci est : une " + type + "  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade
 				+ "\n" + "penalty : " + penalty + "\n" + "shuffleanswers : "
 				+ shuffleAnswers + "\n" + "hidden : " + hidden + "\n"
 				+ "questionsText : " + questionText + "\n" + "image : " + image
-				+ "\n" + "answers : " + answers.toString() + "\n";
+				+ "\n" + "image_64 : " + image_64 + "\n" + "answers : "
+				+ answers.toString() + "\n";
 	}
 
 }

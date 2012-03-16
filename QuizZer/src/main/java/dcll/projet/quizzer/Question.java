@@ -7,7 +7,6 @@ package dcll.projet.quizzer;
 //  @ Author : Clement Bardou
 //
 //
-import java.util.List;
 
 public abstract class  Question {
 	private String name;

@@ -21,6 +21,7 @@ public class MultipleChoice extends Question {
 	private boolean hidden;
 	private boolean shuffleAnswers;
 	private List<Answer> answers = new ArrayList<Answer>();
+	private boolean single;
 	private String type;
 	private String image;
 	private String image_64;
@@ -34,8 +35,9 @@ public class MultipleChoice extends Question {
 			boolean mHidden, List<Answer> mAnswers, String mFormat,
 			String mImage, String mImage_64, String mCorrectFeedback,
 			String mPartiallyCorrectFeedback, String mIncorrectFeedback,
-			String mAnswerNumbering) {
+			String mAnswerNumbering, boolean mSingle) {
 		super(mName);
+		single = mSingle;
 		type = "MultipleChoice";
 		questionText = mQuestionText;
 		format = mFormat;
@@ -52,11 +54,16 @@ public class MultipleChoice extends Question {
 	}
 
 	public String toString() {
-		return "\n----Ceci est une MultipleChoice : \n" + super.toString()
+		return "\n----Ceci est une " + type + " : \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade
 				+ "\n" + "penalty : " + penalty + "\n" + "shuffleanswers : "
 				+ shuffleAnswers + "\n" + "hidden : " + hidden + "\n"
-				+ "questionsText : " + questionText + "\n" + "image : " + image
+				+ "correct feedback : " + correctFeedback + "\n"
+				+ "partially correct feedback : " + partiallyCorrectFeedback
+				+ "\n" + "Single : " + single + "\n" + "incorrect feedback : "
+				+ incorrectFeedback + "\n" + "answer numbering : "
+				+ answerNumbering + "\n" + "questionsText : " + questionText
+				+ "\n" + "image : " + image + "\n" + "image_64 : " + image_64
 				+ "\n" + "answers : " + answers.toString() + "\n";
 	}
 }
