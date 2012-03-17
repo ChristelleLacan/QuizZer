@@ -19,14 +19,14 @@ public class Numerical extends Question {
 	private double penalty;
 	private boolean hidden;
 	private boolean shuffleAnswers;
-	private List<NumericalAnswer> answers = new ArrayList<NumericalAnswer>();
+	private List<Answer> answers = new ArrayList<Answer>();
 	private String type;
 	private String image;
 	private String image_64;
 
 	public Numerical(String mName, String mQuestionText,
 			int mDefaultgrade, double mPenalty, boolean mShuffleanswers,
-			boolean mHidden, List<NumericalAnswer> mAnswers, String mFormat,
+			boolean mHidden, List<Answer> mAnswers, String mFormat,
 			String mImage, String mImage_64) {
 		super(mName);
 		questionText = mQuestionText;

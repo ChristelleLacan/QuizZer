@@ -77,24 +77,104 @@ public class XmlToJava {
 			if (type.equals("cloze")) {
 				xmlClozeToJava(courant, quiz);
 			}
+			if (type.equals("calculated")) {
+				xmlCalcultatedToJava(courant, quiz);
+			}
 		}
 		System.out.println(quiz.toString());
 
 	}
 
-
 	// Gestion des reponses
 	public Answer xmlAnswerToJava(Element e) {
-		String text = e.getChildTextTrim("text");
-		float fraction = Float.parseFloat(e.getAttributeValue("fraction")
-				.trim());
-		String feedback = e.getChild("feedback").getChildTextTrim("text");
-		Answer a = new Answer(text, fraction, feedback);
-		// System.out.println("Voici les reponces : " + a);
+		String text = null;
+		String fraction = null;
+		String feedback = null;
+		String tolerance = null;
+		String toleranceType = null;
+		String correctAnswerFormat = null;
+		String correctAnswerLength = e.getChildTextTrim("correctanswerlength");
+
+		try {
+			tolerance = e.getChildTextTrim("tolerance").trim();
+		} catch (Exception e2) {
+			tolerance = null;
+		}
+
+		if (e.getChildTextTrim("text") != null) {
+			text = e.getChildTextTrim("text");
+		}
+		if (e.getAttributeValue("fraction").trim() != null) {
+			fraction = e.getAttributeValue("fraction").trim();
+		}
+		if (e.getChild("feedback").getChildTextTrim("text") != null) {
+			feedback = e.getChild("feedback").getChildTextTrim("text");
+		}
+
+		if (e.getChildTextTrim("tolerancetype") != null) {
+			toleranceType = e.getChildTextTrim("tolerancetype");
+		}
+		if (e.getChildTextTrim("correctanswerformat") != null) {
+			correctAnswerFormat = e.getChildTextTrim("correctanswerformat");
+		}
+		if (e.getChildTextTrim("correctanswerlength") != null) {
+			correctAnswerLength = e.getChildTextTrim("correctanswerlength");
+		}
+
+		Answer a = new Answer(text, fraction, feedback, tolerance,
+				toleranceType, correctAnswerFormat, correctAnswerLength);
 		return a;
 	}
 
-	private void xmlCategoryToJava(Element e, Questionnaire quiz) {
+	public Unit xmlUnitToJava(Element e) {
+		String multiplier = e.getChildTextTrim("multiplier");
+		String unitName = e.getChildTextTrim("unit_name");
+
+		Unit u = new Unit(multiplier, unitName);
+		return u;
+	}
+
+	public DatasetItem xmlDatasetItemToJava(Element e) {
+		String value = e.getChildTextTrim("value");
+		String number = e.getChildTextTrim("number");
+
+		DatasetItem d = new DatasetItem(value, number);
+		return d;
+	}
+
+	public DatasetDefinition xmlDatasetDefinitionToJava(Element e) {
+		String name = e.getChild("name").getChildTextTrim("text");
+		String status = e.getChild("status").getChildTextTrim("text");
+		String type = e.getChildTextTrim("type");
+		String distribution = e.getChild("distribution").getChildTextTrim(
+				"text");
+		String minimum = e.getChild("minimum").getChildTextTrim("text");
+		;
+		String maximum = e.getChild("maximum").getChildTextTrim("text");
+		;
+		String decimals = e.getChild("decimals").getChildTextTrim("text");
+		;
+		String itemCount = e.getChildTextTrim("itemcount");
+		;
+		ArrayList<DatasetItem> datasetItems = new ArrayList<DatasetItem>();
+		List<?> datasetItemsRes = e.getChild("dataset_items").getChildren(
+				"dataset_item");
+		Iterator<?> j = datasetItemsRes.iterator();
+		// parcours toutes les réponses
+		while (j.hasNext()) {
+			Element courant = (Element) j.next();
+			datasetItems.add(xmlDatasetItemToJava(courant));
+		}
+
+		String numberOfItems = e.getChildTextTrim("number_of_items");
+
+		DatasetDefinition d = new DatasetDefinition(name, status, type,
+				distribution, minimum, maximum, decimals, itemCount,
+				datasetItems, numberOfItems);
+		return d;
+	}
+
+	public void xmlCategoryToJava(Element e, Questionnaire quiz) {
 		String category = e.getChild("category").getChildTextTrim("text");
 
 		Category myQuestion = new Category(category);
@@ -274,11 +354,11 @@ public class XmlToJava {
 				"text");
 		boolean shuffleanswers = Boolean.valueOf(
 				e.getChildTextTrim("shuffleanswers")).booleanValue();
-		
+
 		Cloze myQuestion = new Cloze(name, questionText, shuffleanswers);
 		quiz.getQuestions().add(myQuestion);
 	}
-	
+
 	private void xmlNumericalToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
@@ -291,32 +371,77 @@ public class XmlToJava {
 				e.getChildTextTrim("shuffleanswers")).booleanValue();
 		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
 				.booleanValue();
-		List<NumericalAnswer> answers = new ArrayList<NumericalAnswer>();
+		List<Answer> answers = new ArrayList<Answer>();
 
 		List<?> answersRes = e.getChildren("answer");
 		Iterator<?> i = answersRes.iterator();
-		float fraction;
-		String numericalAnswerText;
-		String feedback;
-		float tolerance;
+
 		// parcours toutes les réponses
 		while (i.hasNext()) {
 			Element courant = (Element) i.next();
-			fraction = Float.parseFloat(courant.getAttributeValue("fraction")
-					.trim());
-			feedback = courant.getChild("feedback").getChildTextTrim("text");
-			numericalAnswerText = courant.getChildTextTrim("text");
-			tolerance = Float.parseFloat(courant.getChildTextTrim("tolerance")
-					.trim());
-			answers.add(new NumericalAnswer(fraction, numericalAnswerText, tolerance, feedback));
+			answers.add(xmlAnswerToJava(courant));
 		}
 		String image = e.getChildTextTrim("image");
 		String image_64 = null;
 		if (image != null) {
 			image_64 = e.getChildTextTrim("image_64");
 		}
-		
-		Numerical myQuestion = new Numerical(name, questionText, defaultgrade, penalty, shuffleanswers, hidden, answers, format, image, image_64);
+
+		Numerical myQuestion = new Numerical(name, questionText, defaultgrade,
+				penalty, shuffleanswers, hidden, answers, format, image,
+				image_64);
+		quiz.getQuestions().add(myQuestion);
+	}
+
+	private void xmlCalcultatedToJava(Element e, Questionnaire quiz) {
+		String name = e.getChild("name").getChildTextTrim("text");
+		String questionText = e.getChild("questiontext").getChildTextTrim(
+				"text");
+		String format = e.getChild("questiontext").getAttributeValue("format")
+				.trim();
+		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
+		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
+		boolean shuffleanswers = Boolean.valueOf(
+				e.getChildTextTrim("shuffleanswers")).booleanValue();
+		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
+				.booleanValue();
+		ArrayList<Answer> answers = new ArrayList<Answer>();
+
+		List<?> answersRes = e.getChildren("answer");
+		Iterator<?> i = answersRes.iterator();
+
+		// parcours toutes les réponses
+		while (i.hasNext()) {
+			Element courant = (Element) i.next();
+			answers.add(xmlAnswerToJava(courant));
+		}
+		String image = e.getChildTextTrim("image");
+		String image_64 = null;
+		if (image != null) {
+			image_64 = e.getChildTextTrim("image_64");
+		}
+
+		ArrayList<Unit> units = new ArrayList<Unit>();
+		List<?> unitsRes = e.getChild("units").getChildren("unit");
+		Iterator<?> j = unitsRes.iterator();
+		// parcours toutes les réponses
+		while (j.hasNext()) {
+			Element courant = (Element) j.next();
+			units.add(xmlUnitToJava(courant));
+		}
+
+		ArrayList<DatasetDefinition> datasetDefinitions = new ArrayList<DatasetDefinition>();
+		List<?> datasetDefinitionsRes = e.getChild("dataset_definitions")
+				.getChildren("dataset_definition");
+		Iterator<?> k = datasetDefinitionsRes.iterator();
+		while (k.hasNext()) {
+			Element courant = (Element) k.next();
+			datasetDefinitions.add(xmlDatasetDefinitionToJava(courant));
+		}
+
+		Calculated myQuestion = new Calculated(name, questionText, format,
+				image, image_64, defaultgrade, penalty, hidden, shuffleanswers,
+				answers, units, datasetDefinitions);
 		quiz.getQuestions().add(myQuestion);
 	}
 
