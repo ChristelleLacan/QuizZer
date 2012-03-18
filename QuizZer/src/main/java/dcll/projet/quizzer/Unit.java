@@ -12,4 +12,14 @@ public class Unit {
 	public String toString() {
 		return "\n--Unit : " + "\n\t\tUnit Name : " + unitName + "\n\t\tMultiplier : " + multiplier;
 	}
+
+	public String getMultiplier() {
+		return multiplier;
+	}
+
+	public String getUnitName() {
+		return unitName;
+	}
+	
+	
 }

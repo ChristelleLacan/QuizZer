@@ -5,11 +5,14 @@ public class Cloze extends Question {
 	private String questiontext;
 	private boolean shuffleanswers;
 	private String type;
+	private String generalfeedback;
 
-	public Cloze(String mName, String mQuestionText, boolean mShuffleanswers) {
+	public Cloze(String mName, String mQuestionText, boolean mShuffleanswers,
+			String mGeneralfeedback) {
 		super(mName);
 		questiontext = mQuestionText;
 		shuffleanswers = mShuffleanswers;
+		generalfeedback = mGeneralfeedback;
 		type = "Cloze";
 	}
 
@@ -19,4 +22,21 @@ public class Cloze extends Question {
 				+ "shuffleanswers : " + shuffleanswers + "\n";
 
 	}
+
+	public String getGeneralfeedback() {
+		return generalfeedback;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getQuestiontext() {
+		return questiontext;
+	}
+
+	public boolean isShuffleanswers() {
+		return shuffleanswers;
+	}
+
 }

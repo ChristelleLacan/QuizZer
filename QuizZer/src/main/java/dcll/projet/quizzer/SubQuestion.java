@@ -12,4 +12,13 @@ public class SubQuestion {
 	public String toString() {
 		return "\nSubquestion Name : " + subQuestionName + "\n" + "Answer Name : "+ answerName+"\n";
 	}
+
+	public String getSubQuestionName() {
+		return subQuestionName;
+	}
+
+	public String getAnswerName() {
+		return answerName;
+	}
+	
 }

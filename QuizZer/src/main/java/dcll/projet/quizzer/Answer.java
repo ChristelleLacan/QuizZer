@@ -41,4 +41,20 @@ public class Answer {
 		return text;
 	}
 
+	public String getTolerance() {
+		return tolerance;
+	}
+
+	public String getToleranceType() {
+		return toleranceType;
+	}
+
+	public String getCorrectAnswerFormat() {
+		return correctAnswerFormat;
+	}
+
+	public String getCorrectAnswerLength() {
+		return correctAnswerLength;
+	}
+
 }

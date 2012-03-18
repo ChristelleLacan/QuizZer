@@ -23,9 +23,8 @@ public abstract class  Question {
 		this.name = name;
 	}
 
-
-
 	public String toString(){
 		return "name : "+name+"\n";
 	}
+
 }

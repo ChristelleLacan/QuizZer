@@ -13,4 +13,14 @@ public class DatasetItem {
 		return "\n--Dataset Item : " + "\n\t\tValue : " + value
 				+ "\n\t\tNumber : " + number;
 	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+	
+	
 }

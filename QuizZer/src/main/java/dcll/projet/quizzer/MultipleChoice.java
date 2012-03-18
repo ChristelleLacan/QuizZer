@@ -25,6 +25,7 @@ public class MultipleChoice extends Question {
 	private String type;
 	private String image;
 	private String image_64;
+	private String generalfeedback;
 	private String correctFeedback;
 	private String partiallyCorrectFeedback;
 	private String incorrectFeedback;
@@ -33,9 +34,9 @@ public class MultipleChoice extends Question {
 	public MultipleChoice(String mName, String mQuestionText,
 			int mDefaultgrade, double mPenalty, boolean mShuffleanswers,
 			boolean mHidden, List<Answer> mAnswers, String mFormat,
-			String mImage, String mImage_64, String mCorrectFeedback,
-			String mPartiallyCorrectFeedback, String mIncorrectFeedback,
-			String mAnswerNumbering, boolean mSingle) {
+			String mImage, String mImage_64, String mGeneralfeedback,
+			String mCorrectFeedback, String mPartiallyCorrectFeedback,
+			String mIncorrectFeedback, String mAnswerNumbering, boolean mSingle) {
 		super(mName);
 		single = mSingle;
 		type = "MultipleChoice";
@@ -47,6 +48,7 @@ public class MultipleChoice extends Question {
 		answers = mAnswers;
 		image = mImage;
 		image_64 = mImage_64;
+		generalfeedback = mGeneralfeedback;
 		correctFeedback = mCorrectFeedback;
 		partiallyCorrectFeedback = mPartiallyCorrectFeedback;
 		incorrectFeedback = mIncorrectFeedback;
@@ -66,4 +68,69 @@ public class MultipleChoice extends Question {
 				+ "\n" + "image : " + image + "\n" + "image_64 : " + image_64
 				+ "\n" + "answers : " + answers.toString() + "\n";
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getQuestionText() {
+		return questionText;
+	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public int getDefaultGrade() {
+		return defaultGrade;
+	}
+
+	public double getPenalty() {
+		return penalty;
+	}
+
+	public boolean isHidden() {
+		return hidden;
+	}
+
+	public boolean isShuffleAnswers() {
+		return shuffleAnswers;
+	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public boolean isSingle() {
+		return single;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public String getImage_64() {
+		return image_64;
+	}
+
+	public String getCorrectFeedback() {
+		return correctFeedback;
+	}
+
+	public String getPartiallyCorrectFeedback() {
+		return partiallyCorrectFeedback;
+	}
+
+	public String getIncorrectFeedback() {
+		return incorrectFeedback;
+	}
+
+	public String getAnswerNumbering() {
+		return answerNumbering;
+	}
+
+	public String getGeneralfeedback() {
+		return generalfeedback;
+	}
+
 }

@@ -3,8 +3,6 @@ package dcll.projet.quizzer;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -36,7 +34,6 @@ public class JavaToXml extends DefaultHandler{
 		if(qName.equals("question") )
 			{
 			inTruefalse=true;
-			answer=new Answer();
 			try{
 				String typ = attributes.getValue("truefalse");
 				//if()
@@ -46,7 +43,7 @@ public class JavaToXml extends DefaultHandler{
 				System.out.println("la question n'est pas de type truefalse");
 				throw new SAXException(e);
 			}
-			
+			answer=new Answer(qName, 0, qName);
 		
 			} 
 		else if(qName.equals("answer") && inTruefalse){
@@ -104,7 +101,7 @@ public class JavaToXml extends DefaultHandler{
 		System.out.print(" ( " + lecture.copyValueOf(ch,start,length)+ " ) ");
 		
 		if(inTruefalse){
-			answer=new Answer();
+			answer=new Answer(lecture, length, lecture);
 			answer.setQuestion(lecture);
 		}
 		else if(inAnswer && inTruefalse){

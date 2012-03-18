@@ -39,4 +39,46 @@ public class DatasetDefinition {
 				+ "\n\tDataset Items : \n" + datasetItems
 				+ "\n\tNumber of Item : " + numberOfItems;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getDistribution() {
+		return distribution;
+	}
+
+	public String getMinimum() {
+		return minimum;
+	}
+
+	public String getMaximum() {
+		return maximum;
+	}
+
+	public String getDecimals() {
+		return decimals;
+	}
+
+	public String getItemCount() {
+		return itemCount;
+	}
+
+	public ArrayList<DatasetItem> getDatasetItems() {
+		return datasetItems;
+	}
+
+	public String getNumberOfItems() {
+		return numberOfItems;
+	}
+	
+	
 }
