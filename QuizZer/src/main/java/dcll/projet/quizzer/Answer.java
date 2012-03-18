@@ -1,5 +1,11 @@
 package dcll.projet.quizzer;
 
+/**
+ * This class contains definition of Answers used in questions
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
 public class Answer {
 	private String fraction;
 	private String tolerance;
@@ -9,9 +15,20 @@ public class Answer {
 	private String feedback;
 	private String text;
 
+	/**
+	 * Constructor :
+	 * 
+	 * @param mText
+	 * @param mFraction
+	 * @param mFeedback
+	 * @param mTolerance
+	 * @param mToleranceType
+	 * @param mCorrectAnswerFormat
+	 * @param mCorrectAnswerLenght
+	 */
 	public Answer(String mText, String mFraction, String mFeedback,
-			String mTolerance, String mToleranceType, String mCorrectAnswerFormat,
-			String mCorrectAnswerLenght) {
+			String mTolerance, String mToleranceType,
+			String mCorrectAnswerFormat, String mCorrectAnswerLenght) {
 		text = mText;
 		fraction = mFraction;
 		feedback = mFeedback;
@@ -21,6 +38,9 @@ public class Answer {
 		correctAnswerLength = mCorrectAnswerLenght;
 	}
 
+	/**
+	 * toString
+	 */
 	public String toString() {
 		return "\n--Text : " + text + "\n\t\tFraction : " + fraction
 				+ "\n\t\tFeedback : " + feedback + "\n\t\tTolerance : "

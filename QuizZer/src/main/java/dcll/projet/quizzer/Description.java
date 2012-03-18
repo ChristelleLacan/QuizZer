@@ -1,15 +1,11 @@
 package dcll.projet.quizzer;
 
-
-//
-//
-//  @ Project : QuizZer
-//  @ File Name : Description.java
-//  @ Date : 15/03/2012
-//  @ Author : Eros Luce
-//
-//
-
+/**
+ * This class contains definition of Description questions
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
 public class Description extends Question {
 
 	private String questionText;
@@ -22,6 +18,19 @@ public class Description extends Question {
 	private String image;
 	private String image_64;
 
+	/**
+	 * Constructor :
+	 * 
+	 * @param mName
+	 * @param mQuestionText
+	 * @param mDefaultgrade
+	 * @param mPenalty
+	 * @param mShuffleanswers
+	 * @param mHidden
+	 * @param mFormat
+	 * @param mImage
+	 * @param mImage_64
+	 */
 	public Description(String mName, String mQuestionText, int mDefaultgrade,
 			double mPenalty, boolean mShuffleanswers, boolean mHidden,
 			String mFormat, String mImage, String mImage_64) {
@@ -37,6 +46,9 @@ public class Description extends Question {
 
 	}
 
+	/**
+	 * toString
+	 */
 	public String toString() {
 		return "\n----Ceci est : une " + type + "  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade

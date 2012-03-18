@@ -2,6 +2,12 @@ package dcll.projet.quizzer;
 
 import java.util.ArrayList;
 
+/**
+ * This class contains definition of Calculated Questions
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
 public class Calculated extends Question {
 
 	private String type;
@@ -17,8 +23,24 @@ public class Calculated extends Question {
 	private ArrayList<Unit> units = new ArrayList<Unit>();
 	private ArrayList<DatasetDefinition> datasetDefinitions = new ArrayList<DatasetDefinition>();
 
-	public Calculated(String mName, String mQuestionText,
-			String mFormat, String mImage, String mImage_64, int mDefaultGrade,
+	/**
+	 * Constructor :
+	 * 
+	 * @param mName
+	 * @param mQuestionText
+	 * @param mFormat
+	 * @param mImage
+	 * @param mImage_64
+	 * @param mDefaultGrade
+	 * @param mPenalty
+	 * @param mHidden
+	 * @param mShuffleAnswers
+	 * @param mAnswers
+	 * @param mUnits
+	 * @param mDatasetDefinitions
+	 */
+	public Calculated(String mName, String mQuestionText, String mFormat,
+			String mImage, String mImage_64, int mDefaultGrade,
 			double mPenalty, boolean mHidden, boolean mShuffleAnswers,
 			ArrayList<Answer> mAnswers, ArrayList<Unit> mUnits,
 			ArrayList<DatasetDefinition> mDatasetDefinitions) {
@@ -37,6 +59,9 @@ public class Calculated extends Question {
 		datasetDefinitions = mDatasetDefinitions;
 	}
 
+	/**
+	 * toString
+	 */
 	public String toString() {
 		return "\n----Ceci est : une " + type + "  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade

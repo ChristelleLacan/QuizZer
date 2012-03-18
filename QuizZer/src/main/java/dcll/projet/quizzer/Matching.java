@@ -2,14 +2,13 @@ package dcll.projet.quizzer;
 
 import java.util.ArrayList;
 import java.util.List;
-//
-//  @ Project : QuizZer
-//  @ File Name : Matching.java
-//  @ Date : 05/03/2012
-//  @ Author : Clement Bardou
-//
-//
 
+/**
+ * This class contains definition of Matching questions
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
 public class Matching extends Question {
 
 	private String questionText;
@@ -23,6 +22,20 @@ public class Matching extends Question {
 	private String image_64;
 	private List<SubQuestion> subQuestions = new ArrayList<SubQuestion>();
 
+	/**
+	 * Constructor :
+	 * 
+	 * @param mName
+	 * @param mQuestionText
+	 * @param mDefaultgrade
+	 * @param mPenalty
+	 * @param mShuffleanswers
+	 * @param mHidden
+	 * @param mFormat
+	 * @param mImage
+	 * @param mImage_64
+	 * @param mSubQuestions
+	 */
 	public Matching(String mName, String mQuestionText, int mDefaultgrade,
 			double mPenalty, boolean mShuffleanswers, boolean mHidden,
 			String mFormat, String mImage, String mImage_64,
@@ -39,8 +52,11 @@ public class Matching extends Question {
 		subQuestions = mSubQuestions;
 	}
 
+	/**
+	 * toString
+	 */
 	public String toString() {
-		return "\n----Ceci est : une "+ type +"  \n" + super.toString()
+		return "\n----Ceci est : une " + type + "  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade
 				+ "\n" + "penalty : " + penalty + "\n" + "shuffleanswers : "
 				+ shuffleAnswers + "\n" + "hidden : " + hidden + "\n"

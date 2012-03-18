@@ -1,20 +1,23 @@
 package dcll.projet.quizzer;
 
-//
-//  @ Project : QuizZer
-//  @ File Name : Question.java
-//  @ Date : 05/03/2012
-//  @ Author : Clement Bardou
-//
-//
-
-public abstract class  Question {
+/**
+ * This class contains the definition of an abstract question
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
+public abstract class Question {
 	private String name;
 
+	/**
+	 * Contructor :
+	 * 
+	 * @param mName
+	 */
 	public Question(String mName) {
 		name = mName;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -23,9 +26,10 @@ public abstract class  Question {
 		this.name = name;
 	}
 
-
-
-	public String toString(){
-		return "name : "+name+"\n";
+	/**
+	 * toString
+	 */
+	public String toString() {
+		return "name : " + name + "\n";
 	}
 }

@@ -8,20 +8,22 @@ import java.util.List;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
-//
-//
-//  @ Project : QuizZer
-//  @ File Name : XmlToJava.java
-//  @ Date : 05/03/2012
-//  @ Author : Clement Bardou
-//
-//
-
+/**
+ * This class contains the definition of the xmlToJava Parser used to parse xml
+ * document into java objects
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
 public class XmlToJava {
 
 	private org.jdom.Document document;
 	private static Element racine;
 
+	/**
+	 * This method is used to load xml document. This method initialize the
+	 * racine Element with the root of the xml document
+	 */
 	public void loadDocument() {
 		// On crée une instance de SAXBuilder
 		SAXBuilder sxb = new SAXBuilder();
@@ -38,6 +40,9 @@ public class XmlToJava {
 		racine = document.getRootElement();
 	}
 
+	/**
+	 * The run method is here to launch the parsing of the xml document
+	 */
 	public void run() {
 		List<?> questionsXML = racine.getChildren("question");
 
@@ -85,8 +90,15 @@ public class XmlToJava {
 
 	}
 
-	// Gestion des reponses
-	public Answer xmlAnswerToJava(Element e) {
+	/**
+	 * This method take an element of type <answer> and return the parsed
+	 * element
+	 * 
+	 * @param e
+	 *            : <answer>
+	 * @return a : The parsed answer.
+	 */
+	private Answer xmlAnswerToJava(Element e) {
 		String text = null;
 		String fraction = null;
 		String feedback = null;
@@ -126,7 +138,14 @@ public class XmlToJava {
 		return a;
 	}
 
-	public Unit xmlUnitToJava(Element e) {
+	/**
+	 * This method take an element of type <unit> and return the parsed unit
+	 * 
+	 * @param e
+	 *            : <unit>.
+	 * @return u : The parsed unit.
+	 */
+	private Unit xmlUnitToJava(Element e) {
 		String multiplier = e.getChildTextTrim("multiplier");
 		String unitName = e.getChildTextTrim("unit_name");
 
@@ -134,7 +153,15 @@ public class XmlToJava {
 		return u;
 	}
 
-	public DatasetItem xmlDatasetItemToJava(Element e) {
+	/**
+	 * This method take an element of type <dataset_item> and return the parsed
+	 * datasetItem
+	 * 
+	 * @param e
+	 *            : <dataset_item>
+	 * @return d : The parsed datasetItem
+	 */
+	private DatasetItem xmlDatasetItemToJava(Element e) {
 		String value = e.getChildTextTrim("value");
 		String number = e.getChildTextTrim("number");
 
@@ -142,7 +169,15 @@ public class XmlToJava {
 		return d;
 	}
 
-	public DatasetDefinition xmlDatasetDefinitionToJava(Element e) {
+	/**
+	 * This method take an element of type <dataset_definition> and return the
+	 * parsed datasetDefinition
+	 * 
+	 * @param e
+	 *            : <dataset_definition>
+	 * @return d : The parse datasetDefinition
+	 */
+	private DatasetDefinition xmlDatasetDefinitionToJava(Element e) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String status = e.getChild("status").getChildTextTrim("text");
 		String type = e.getChildTextTrim("type");
@@ -174,15 +209,28 @@ public class XmlToJava {
 		return d;
 	}
 
-	public void xmlCategoryToJava(Element e, Questionnaire quiz) {
+	/**
+	 * This method parse an element <question> of type Category and add it to
+	 * the Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
+	private void xmlCategoryToJava(Element e, Questionnaire quiz) {
 		String category = e.getChild("category").getChildTextTrim("text");
 
 		Category myQuestion = new Category(category);
 		quiz.getQuestions().add(myQuestion);
 	}
 
-	// Gestion de xml vers java : DESCRIPTION
-	public void xmlDescriptionToJava(Element e, Questionnaire quiz) {
+	/**
+	 * This method parse an element <question> of type Description and add it to
+	 * the Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
+	private void xmlDescriptionToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
 				"text");
@@ -206,8 +254,14 @@ public class XmlToJava {
 		quiz.getQuestions().add(myQuestion);
 	}
 
-	// Gestion de xml vers java : MULTIPLE CHOICE
-	public void xmlMultipleChoiceToJava(Element e, Questionnaire quiz) {
+	/**
+	 * This method parse an element <question> of type MultipleChoice and add it
+	 * to the Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
+	private void xmlMultipleChoiceToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
 				"text");
@@ -250,8 +304,14 @@ public class XmlToJava {
 		quiz.getQuestions().add(myQuestion);
 	}
 
-	// Gestion de xml vers java : SHORT ANSWER
-	public void xmlShortAnswerToJava(Element e, Questionnaire quiz) {
+	/**
+	 * This method parse an element <question> of type ShortAnswer and add it to
+	 * the Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
+	private void xmlShortAnswerToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
 				"text");
@@ -280,6 +340,13 @@ public class XmlToJava {
 		// quiz.getQuestions().add(myQuestion);
 	}
 
+	/**
+	 * This method parse an element <question> of type Essay and add it to the
+	 * Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
 	private void xmlEssayToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
@@ -312,6 +379,13 @@ public class XmlToJava {
 		quiz.getQuestions().add(myQuestion);
 	}
 
+	/**
+	 * This method parse an element <question> of type Matching and add it to
+	 * the Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
 	private void xmlMatchingToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
@@ -348,6 +422,13 @@ public class XmlToJava {
 		quiz.getQuestions().add(myQuestion);
 	}
 
+	/**
+	 * This method parse an element <question> of type Cloze and add it to the
+	 * Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
 	private void xmlClozeToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
@@ -359,6 +440,13 @@ public class XmlToJava {
 		quiz.getQuestions().add(myQuestion);
 	}
 
+	/**
+	 * This method parse an element <question> of type Numerical and add it to
+	 * the Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
 	private void xmlNumericalToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
@@ -393,6 +481,13 @@ public class XmlToJava {
 		quiz.getQuestions().add(myQuestion);
 	}
 
+	/**
+	 * This method parse an element <question> of type Calculated and add it to
+	 * the Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
 	private void xmlCalcultatedToJava(Element e, Questionnaire quiz) {
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
