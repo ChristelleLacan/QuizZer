@@ -2,15 +2,13 @@ package dcll.projet.quizzer;
 
 import java.util.ArrayList;
 import java.util.List;
-//
-//
-//  @ Project : QuizZer
-//  @ File Name : Essay.java
-//  @ Date : 05/03/2012
-//  @ Author : Clement Bardou
-//
-//
 
+/**
+ * This class contains definition of Essay questions
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
 public class Essay extends Question {
 
 	private String questionText;
@@ -25,6 +23,20 @@ public class Essay extends Question {
 	private String image;
 	private String image_64;
 
+	/**
+	 * Constructor :
+	 * 
+	 * @param mName
+	 * @param mQuestionText
+	 * @param mDefaultgrade
+	 * @param mPenalty
+	 * @param mShuffleanswers
+	 * @param mHidden
+	 * @param mAnswers
+	 * @param mFormat
+	 * @param mImage
+	 * @param mImage_64
+	 */
 	public Essay(String mName, String mQuestionText, int mDefaultgrade,
 			double mPenalty, boolean mShuffleanswers, boolean mHidden,
 			String mGeneralfeedback, List<Answer> mAnswers, String mFormat,
@@ -42,6 +54,9 @@ public class Essay extends Question {
 		image_64 = mImage_64;
 	}
 
+	/**
+	 * toString
+	 */
 	public String toString() {
 		return "\n----Ceci est : une " + type + "  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade
