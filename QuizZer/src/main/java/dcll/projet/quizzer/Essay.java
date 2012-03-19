@@ -15,8 +15,8 @@ public class Essay extends Question {
 	private String format;
 	private int defaultGrade;
 	private double penalty;
-	private boolean hidden;
-	private boolean shuffleAnswers;
+	private int hidden;
+	private int shuffleAnswers;
 	private String generalfeedback;
 	private List<Answer> answers = new ArrayList<Answer>();
 	private String type;
@@ -38,7 +38,7 @@ public class Essay extends Question {
 	 * @param mImage_64
 	 */
 	public Essay(String mName, String mQuestionText, int mDefaultgrade,
-			double mPenalty, boolean mShuffleanswers, boolean mHidden,
+			double mPenalty, int mShuffleanswers, int mHidden,
 			String mGeneralfeedback, List<Answer> mAnswers, String mFormat,
 			String mImage, String mImage_64) {
 		super(mName);
@@ -47,6 +47,7 @@ public class Essay extends Question {
 		defaultGrade = mDefaultgrade;
 		penalty = mPenalty;
 		hidden = mHidden;
+		shuffleAnswers = mShuffleanswers;
 		answers = mAnswers;
 		generalfeedback = mGeneralfeedback;
 		type = "Essay";
@@ -87,11 +88,11 @@ public class Essay extends Question {
 		return penalty;
 	}
 
-	public boolean isHidden() {
+	public int isHidden() {
 		return hidden;
 	}
 
-	public boolean isShuffleAnswers() {
+	public int isShuffleAnswers() {
 		return shuffleAnswers;
 	}
 

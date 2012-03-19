@@ -15,15 +15,15 @@ public class ShortAnswer extends Question {
 	private String generalfeedback;
 	private int defaultgrade;
 	private double penalty;
-	private boolean hidden;
-	private boolean shuffleanswers;
+	private int hidden;
+	private int shuffleanswers;
 	private int usecase;
 	private List<Answer> answers;
 	private String type;
 
 	public ShortAnswer(String mName, String mQuestionText, String mFormat,
 			String mImage, String mGeneralFeedback, int mDefaultgrade,
-			double mPenalty, boolean mHidden, boolean mShuffleanswers,
+			double mPenalty, int mHidden, int mShuffleanswers,
 			int mUsecase, List<Answer> mAnswers) {
 		super(mName);
 		questiontext = mQuestionText;
@@ -61,11 +61,11 @@ public class ShortAnswer extends Question {
 		return penalty;
 	}
 
-	public boolean isHidden() {
+	public int isHidden() {
 		return hidden;
 	}
 
-	public boolean isShuffleanswers() {
+	public int isShuffleanswers() {
 		return shuffleanswers;
 	}
 

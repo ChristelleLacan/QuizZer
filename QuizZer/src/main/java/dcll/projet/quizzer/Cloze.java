@@ -9,7 +9,7 @@ package dcll.projet.quizzer;
 public class Cloze extends Question {
 
 	private String questiontext;
-	private boolean shuffleanswers;
+	private int shuffleanswers;
 	private String type;
 	private String generalfeedback;
 
@@ -20,7 +20,7 @@ public class Cloze extends Question {
 	 * @param mQuestionText
 	 * @param mShuffleanswers
 	 */
-	public Cloze(String mName, String mQuestionText, boolean mShuffleanswers,
+	public Cloze(String mName, String mQuestionText, int mShuffleanswers,
 			String mGeneralfeedback) {
 		super(mName);
 		questiontext = mQuestionText;
@@ -51,7 +51,7 @@ public class Cloze extends Question {
 		return questiontext;
 	}
 
-	public boolean isShuffleanswers() {
+	public int isShuffleanswers() {
 		return shuffleanswers;
 	}
 

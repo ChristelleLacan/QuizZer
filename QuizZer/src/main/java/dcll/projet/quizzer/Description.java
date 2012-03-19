@@ -14,8 +14,8 @@ public class Description extends Question {
 	private String format;
 	private int defaultGrade;
 	private double penalty;
-	private boolean hidden;
-	private boolean shuffleAnswers;
+	private int hidden;
+	private int shuffleAnswers;
 	private String type;
 	private String image;
 	private String image_64;
@@ -41,7 +41,7 @@ public class Description extends Question {
 	 */
 	public Description(String mName, String mQuestionText,
 			String mGeneralfeedback, int mDefaultgrade, double mPenalty,
-			boolean mShuffleanswers, boolean mHidden, String mFormat,
+			int mShuffleanswers, int mHidden, String mFormat,
 			String mImage, String mImage_64) {
 		super(mName);
 		type = "Description";
@@ -51,6 +51,7 @@ public class Description extends Question {
 		defaultGrade = mDefaultgrade;
 		penalty = mPenalty;
 		hidden = mHidden;
+		shuffleAnswers = mShuffleanswers;
 		image = mImage;
 		image_64 = mImage_64;
 
@@ -89,11 +90,11 @@ public class Description extends Question {
 		return penalty;
 	}
 
-	public boolean isHidden() {
+	public int getHidden() {
 		return hidden;
 	}
 
-	public boolean isShuffleAnswers() {
+	public int getShuffleAnswers() {
 		return shuffleAnswers;
 	}
 

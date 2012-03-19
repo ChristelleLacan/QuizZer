@@ -49,7 +49,7 @@ public class Calculated extends Question {
 		super(mName);
 		questionText = mQuestionText;
 		format = mFormat;
-		type = "Calculated";
+		type = "calculated";
 		image = mImage;
 		image_64 = mImage_64;
 		generalfeedback = mGeneralfeedback;

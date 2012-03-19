@@ -11,12 +11,13 @@ import java.util.List;
  */
 public class Numerical extends Question {
 
+	private String generalfeedback;
 	private String questionText;
 	private String format;
 	private int defaultGrade;
 	private double penalty;
-	private boolean hidden;
-	private boolean shuffleAnswers;
+	private int hidden;
+	private int shuffleAnswers;
 	private List<Answer> answers = new ArrayList<Answer>();
 	private String type;
 	private String image;
@@ -37,8 +38,8 @@ public class Numerical extends Question {
 	 * @param mImage_64
 	 */
 	public Numerical(String mName, String mQuestionText, int mDefaultgrade,
-			double mPenalty, boolean mShuffleanswers, boolean mHidden,
-			List<Answer> mAnswers, String mFormat, String mImage,
+			double mPenalty, int mShuffleanswers, String mGeneralfeedback,
+			int mHidden, List<Answer> mAnswers, String mFormat, String mImage,
 			String mImage_64) {
 		super(mName);
 		questionText = mQuestionText;
@@ -46,6 +47,8 @@ public class Numerical extends Question {
 		defaultGrade = mDefaultgrade;
 		penalty = mPenalty;
 		hidden = mHidden;
+		generalfeedback = mGeneralfeedback;
+		shuffleAnswers = mShuffleanswers;
 		answers = mAnswers;
 		image = mImage;
 		image_64 = mImage_64;
@@ -65,5 +68,48 @@ public class Numerical extends Question {
 				+ "answers : " + answers.toString() + "\n";
 	}
 
-}
+	public String getGeneralfeedback() {
+		return generalfeedback;
+	}
 
+	public String getQuestionText() {
+		return questionText;
+	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public int getDefaultGrade() {
+		return defaultGrade;
+	}
+
+	public double getPenalty() {
+		return penalty;
+	}
+
+	public int getHidden() {
+		return hidden;
+	}
+
+	public int getShuffleAnswers() {
+		return shuffleAnswers;
+	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public String getImage_64() {
+		return image_64;
+	}
+
+}

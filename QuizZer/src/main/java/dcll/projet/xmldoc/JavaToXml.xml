@@ -5,7 +5,7 @@
       <text>$course$/Défaut pour 1SA3GL1</text>
     </category>
   </question>
-  <question type="Calculated">
+  <question type="calculated">
     <name>
       <text>Aire du cercle</text>
     </name>
@@ -18,19 +18,24 @@
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0.1</penalty>
-    <hidden>false</hidden>
-    <shuffleanswer>false</shuffleanswer>
+    <hidden>0</hidden>
+    <shuffleanswer>0</shuffleanswer>
     <answer fraction="100">
       <text>3.14 * {R}*{R}</text>
       <tolerance>0.01</tolerance>
+      <tolerancetype>1</tolerancetype>
+      <correctanswerformat>1</correctanswerformat>
+      <correctanswerlength>1</correctanswerlength>
       <feedback>
         <text />
       </feedback>
     </answer>
-    <unit>
-      <multiplier>1</multiplier>
-      <unit_name>m2</unit_name>
-    </unit>
+    <units>
+      <unit>
+        <multiplier>1</multiplier>
+        <unit_name>m2</unit_name>
+      </unit>
+    </units>
     <dataset_definitions>
       <dataset_definition>
         <status>
@@ -53,14 +58,67 @@
           <text>1</text>
         </decimals>
         <itemcount>10</itemcount>
+        <dataset_items>
+          <dataset_item>
+            <number>1</number>
+            <value>6.9</value>
+          </dataset_item>
+          <dataset_item>
+            <number>2</number>
+            <value>9.7</value>
+          </dataset_item>
+          <dataset_item>
+            <number>3</number>
+            <value>5.2</value>
+          </dataset_item>
+          <dataset_item>
+            <number>4</number>
+            <value>7.1</value>
+          </dataset_item>
+          <dataset_item>
+            <number>5</number>
+            <value>4.8</value>
+          </dataset_item>
+          <dataset_item>
+            <number>6</number>
+            <value>6.0</value>
+          </dataset_item>
+          <dataset_item>
+            <number>7</number>
+            <value>6.3</value>
+          </dataset_item>
+          <dataset_item>
+            <number>8</number>
+            <value>5.0</value>
+          </dataset_item>
+          <dataset_item>
+            <number>9</number>
+            <value>6.2</value>
+          </dataset_item>
+          <dataset_item>
+            <number>10</number>
+            <value>2.6</value>
+          </dataset_item>
+        </dataset_items>
+        <number_of_items>10</number_of_items>
       </dataset_definition>
     </dataset_definitions>
-    <dataset_items>
-      <dataset_item>
-        <number>1</number>
-        <value>6.9</value>
-      </dataset_item>
-    </dataset_items>
+  </question>
+  <question type="Description">
+    <name>
+      <text>Consigne dispositif électronique</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Pas de calculatrice !</text>
+    </questionText>
+    <image />
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0.0</penalty>
+    <hidden>0</hidden>
+    <shuffleanswer>0</shuffleanswer>
   </question>
   <question type="Essay">
     <name>
@@ -75,8 +133,8 @@
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0.0</penalty>
-    <hidden>false</hidden>
-    <shuffleanswer>false</shuffleanswer>
+    <hidden>0</hidden>
+    <shuffleanswer>0</shuffleanswer>
     <answer fraction="0">
       <text />
       <feedback>
@@ -97,8 +155,8 @@
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0.1</penalty>
-    <hidden>false</hidden>
-    <shuffleanswer>false</shuffleanswer>
+    <hidden>0</hidden>
+    <shuffleanswer>1</shuffleanswer>
     <subquestion>
       <text>JBOSS</text>
       <answer>
@@ -138,9 +196,9 @@ b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
     <generalfeedback>
       <text />
     </generalfeedback>
-    <shuffleanswer>false</shuffleanswer>
+    <shuffleanswer>0</shuffleanswer>
   </question>
-  <question type="MultipleChoice">
+  <question type="multiplechoice">
     <name>
       <text>Architecture à 3 niveaux ?</text>
     </name>
@@ -154,8 +212,9 @@ b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0.1</penalty>
-    <hidden>false</hidden>
-    <shuffleanswer>false</shuffleanswer>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswer>1</shuffleanswer>
     <correctfeedback>
       <text />
     </correctfeedback>
@@ -179,7 +238,7 @@ b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
       </feedback>
     </answer>
   </question>
-  <question type="MultipleChoice">
+  <question type="multiplechoice">
     <name>
       <text>Architectures N tiers</text>
     </name>
@@ -193,8 +252,9 @@ b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0.1</penalty>
-    <hidden>false</hidden>
-    <shuffleanswer>false</shuffleanswer>
+    <hidden>0</hidden>
+    <single>false</single>
+    <shuffleanswer>1</shuffleanswer>
     <correctfeedback>
       <text>OK</text>
     </correctfeedback>
@@ -230,7 +290,29 @@ b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
       </feedback>
     </answer>
   </question>
-  <question />
+  <question type="Numerical">
+    <name>
+      <text>HTTP 1er protocole de l'Internet</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>En quelle année HTTP devient le premier protocole de l'Internet ?</text>
+    </questionText>
+    <image />
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <shuffleanswer>0</shuffleanswer>
+    <answer fraction="100">
+      <text>1996</text>
+      <tolerance>0</tolerance>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+  </question>
   <question type="ShortAnswer">
     <name>
       <text>MVC</text>
@@ -244,8 +326,8 @@ b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
     </generalfeedback>
     <defaultgrade>0</defaultgrade>
     <penalty>0.1</penalty>
-    <hidden>false</hidden>
-    <shuffleanswer>false</shuffleanswer>
+    <hidden>0</hidden>
+    <shuffleanswer>0</shuffleanswer>
     <usecase>0</usecase>
     <answer fraction="100">
       <text>Model View Controller</text>
@@ -273,8 +355,8 @@ b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
     </generalfeedback>
     <defaultgrade>0</defaultgrade>
     <penalty>0.1</penalty>
-    <hidden>false</hidden>
-    <shuffleanswer>false</shuffleanswer>
+    <hidden>0</hidden>
+    <shuffleanswer>0</shuffleanswer>
     <usecase>0</usecase>
     <answer fraction="100">
       <text>Simula 66</text>

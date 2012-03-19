@@ -15,8 +15,8 @@ public class Matching extends Question {
 	private String format;
 	private int defaultGrade;
 	private double penalty;
-	private boolean hidden;
-	private boolean shuffleAnswers;
+	private int hidden;
+	private int shuffleAnswers;
 	private String generalfeedback;
 	private String type;
 	private String image;
@@ -38,7 +38,7 @@ public class Matching extends Question {
 	 * @param mSubQuestions
 	 */
 	public Matching(String mName, String mQuestionText, int mDefaultgrade,
-			double mPenalty, boolean mShuffleanswers, boolean mHidden,
+			double mPenalty, int mShuffleanswers, int mHidden,
 			String mFormat, String mGeneralfeedback, String mImage,
 			String mImage_64, List<SubQuestion> mSubQuestions) {
 		super(mName);
@@ -48,6 +48,7 @@ public class Matching extends Question {
 		defaultGrade = mDefaultgrade;
 		penalty = mPenalty;
 		hidden = mHidden;
+		shuffleAnswers = mShuffleanswers;
 		generalfeedback = mGeneralfeedback;
 		image = mImage;
 		image_64 = mImage_64;
@@ -87,11 +88,11 @@ public class Matching extends Question {
 		return penalty;
 	}
 
-	public boolean isHidden() {
+	public int isHidden() {
 		return hidden;
 	}
 
-	public boolean isShuffleAnswers() {
+	public int isShuffleAnswers() {
 		return shuffleAnswers;
 	}
 

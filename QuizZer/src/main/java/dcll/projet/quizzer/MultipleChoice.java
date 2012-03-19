@@ -15,8 +15,8 @@ public class MultipleChoice extends Question {
 	private String format;
 	private int defaultGrade;
 	private double penalty;
-	private boolean hidden;
-	private boolean shuffleAnswers;
+	private int hidden;
+	private int shuffleAnswers;
 	private List<Answer> answers = new ArrayList<Answer>();
 	private boolean single;
 	private String type;
@@ -48,19 +48,20 @@ public class MultipleChoice extends Question {
 	 * @param mSingle
 	 */
 	public MultipleChoice(String mName, String mQuestionText,
-			int mDefaultgrade, double mPenalty, boolean mShuffleanswers,
-			boolean mHidden, List<Answer> mAnswers, String mFormat,
+			int mDefaultgrade, double mPenalty, int mShuffleanswers,
+			int mHidden, List<Answer> mAnswers, String mFormat,
 			String mImage, String mImage_64, String mGeneralfeedback,
 			String mCorrectFeedback, String mPartiallyCorrectFeedback,
 			String mIncorrectFeedback, String mAnswerNumbering, boolean mSingle) {
 		super(mName);
 		single = mSingle;
-		type = "MultipleChoice";
+		type = "multiplechoice";
 		questionText = mQuestionText;
 		format = mFormat;
 		defaultGrade = mDefaultgrade;
 		penalty = mPenalty;
 		hidden = mHidden;
+		shuffleAnswers = mShuffleanswers;
 		answers = mAnswers;
 		image = mImage;
 		image_64 = mImage_64;
@@ -105,11 +106,11 @@ public class MultipleChoice extends Question {
 		return penalty;
 	}
 
-	public boolean isHidden() {
+	public int getHidden() {
 		return hidden;
 	}
 
-	public boolean isShuffleAnswers() {
+	public int getShuffleAnswers() {
 		return shuffleAnswers;
 	}
 

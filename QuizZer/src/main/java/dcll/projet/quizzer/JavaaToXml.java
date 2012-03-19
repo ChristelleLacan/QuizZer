@@ -99,8 +99,8 @@ public class JavaaToXml {
 				convertEssay((Essay) q, question);
 			} else if (q instanceof TrueFalse) {
 				convertTrueFalse((TrueFalse) q, question);
-			} else if (q instanceof NumericalReponse) {
-				convertNumericalReponse((NumericalReponse) q, question);
+			} else if (q instanceof Numerical) {
+				convertNumerical((Numerical) q, question);
 			} else if (q instanceof Description) {
 				convertDescription((Description) q, question);
 			}
@@ -148,11 +148,11 @@ public class JavaaToXml {
 
 		Element hidden = new Element("hidden");
 		question.addContent(hidden);
-		hidden.addContent("" + q.isHidden());
+		hidden.addContent("" + q.getHidden());
 
 		Element shuffleanswers = new Element("shuffleanswer");
 		question.addContent(shuffleanswers);
-		shuffleanswers.addContent("" + q.isShuffleAnswers());
+		shuffleanswers.addContent("" + q.getShuffleAnswers());
 
 	}
 
@@ -217,17 +217,32 @@ public class JavaaToXml {
 			Element tolerance = new Element("tolerance");
 			answer.addContent(tolerance);
 			tolerance.addContent(current.getTolerance());
+			
+			Element tolerancetype = new Element ("tolerancetype");
+			answer.addContent(tolerancetype);
+			tolerancetype.addContent(current.getToleranceType());
+			
+			Element correctanswerformat = new Element ("correctanswerformat");
+			answer.addContent(correctanswerformat);
+			correctanswerformat.addContent(current.getCorrectAnswerFormat());
 
+			Element correctanswerlength = new Element ("correctanswerlength");
+			answer.addContent(correctanswerlength);
+			correctanswerlength.addContent(current.getCorrectAnswerLength());
+			
 			feedback = new Element("feedback");
 			answer.addContent(feedback);
 			text = new Element("text");
 			feedback.addContent(text);
 			text.addContent(current.getFeedback());
 		}
-
+		
+		Element units = new Element("units");
+		question.addContent(units);
+		
 		for (int i = 0; i < q.getUnits().size(); i++) {
 			Element unit = new Element("unit");
-			question.addContent(unit);
+			units.addContent(unit);
 
 			Element multiplier = new Element("multiplier");
 			Element unit_name = new Element("unit_name");
@@ -292,9 +307,9 @@ public class JavaaToXml {
 					.getItemCount());
 
 			dataset_items = new Element("dataset_items");
-			question.addContent(dataset_items);
+			dataset_definition.addContent(dataset_items);
 
-			for (int j = 0; j < q.getDatasetDefinitions().size(); j++) {
+			for (int j = 0; j < q.getDatasetDefinitions().get(i).getDatasetItems().size(); j++) {
 				dataset_item = new Element("dataset_item");
 				dataset_items.addContent(dataset_item);
 
@@ -309,8 +324,11 @@ public class JavaaToXml {
 						.getDatasetItems().get(j).getValue());
 
 			}
+			
+			Element number_of_items = new Element("number_of_items");
+			dataset_definition.addContent(number_of_items);
+			number_of_items.addContent(q.getDatasetDefinitions().get(i).getNumberOfItems());
 		}
-
 	}
 
 	private static void convertCloze(Cloze q, Element question) {
@@ -551,7 +569,7 @@ public class JavaaToXml {
 		}
 	}
 
-	private static void convertNumericalReponse(NumericalReponse q,
+	private static void convertNumerical(Numerical q,
 			Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -590,11 +608,11 @@ public class JavaaToXml {
 
 		Element hidden = new Element("hidden");
 		question.addContent(hidden);
-		hidden.addContent("" + q.isHidden());
+		hidden.addContent("" + q.getHidden());
 
 		Element shuffleanswers = new Element("shuffleanswer");
 		question.addContent(shuffleanswers);
-		shuffleanswers.addContent("" + q.isShuffleAnswers());
+		shuffleanswers.addContent("" + q.getShuffleAnswers());
 
 		Element answer, feedback;
 		Attribute fraction;
@@ -664,11 +682,15 @@ public class JavaaToXml {
 
 		Element hidden = new Element("hidden");
 		question.addContent(hidden);
-		hidden.addContent("" + q.isHidden());
+		hidden.addContent("" + q.getHidden());
+		
+		Element single = new Element("single");
+		question.addContent(single);
+		single.addContent(q.isSingle()+"");
 
 		Element shuffleanswers = new Element("shuffleanswer");
 		question.addContent(shuffleanswers);
-		shuffleanswers.addContent("" + q.isShuffleAnswers());
+		shuffleanswers.addContent("" + q.getShuffleAnswers());
 
 		Element correctfeedback = new Element("correctfeedback");
 		question.addContent(correctfeedback);

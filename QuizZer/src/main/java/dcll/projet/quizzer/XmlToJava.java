@@ -245,11 +245,12 @@ public class XmlToJava implements IxmlToJava {
 		if (image != null) {
 			image_64 = e.getChildTextTrim("image_64");
 		}
-
-		/*Description myQuestion = new Description(name, questionText,
-				defaultgrade, penalty, shuffleanswers, hidden, format, image,
-				image_64);
-		quiz.getQuestions().add(myQuestion);*/
+		String generalFeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
+		Description myQuestion = new Description(name, questionText,
+				generalFeedback, defaultgrade, penalty, shuffleanswers, hidden,
+				format, image, image_64);
+		quiz.getQuestions().add(myQuestion);
 	}
 
 	/**
@@ -284,7 +285,7 @@ public class XmlToJava implements IxmlToJava {
 		if (!(image.equals(""))) {
 			image_64 = e.getChildText("image_64");
 		}
-		int single = Boolean.valueOf(e.getChildTextTrim("single"))
+		boolean single = Boolean.valueOf(e.getChildTextTrim("single"))
 				.booleanValue();
 		String correctFeedback = e.getChild("correctfeedback")
 				.getChildTextTrim("text");
@@ -480,10 +481,11 @@ public class XmlToJava implements IxmlToJava {
 		if (image != null) {
 			image_64 = e.getChildTextTrim("image_64");
 		}
-
+		String mGeneralfeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
 		Numerical myQuestion = new Numerical(name, questionText, defaultgrade,
-				penalty, shuffleanswers, hidden, answers, format, image,
-				image_64);
+				penalty, shuffleanswers, mGeneralfeedback, hidden, answers,
+				format, image, image_64);
 		quiz.getQuestions().add(myQuestion);
 	}
 
