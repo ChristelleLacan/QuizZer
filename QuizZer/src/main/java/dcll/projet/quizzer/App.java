@@ -7,7 +7,7 @@ package dcll.projet.quizzer;
 public class App {
 	public static void main(String[] args) {
 		String myFile = "../xmldoc/quiz.xml";
-		XmlToJava myXmlToJavaParser = new XmlToJava();
+		IxmlToJava myXmlToJavaParser = new XmlToJava();
 		Questionnaire myQuiz = myXmlToJavaParser.run(myFile);
 
 		System.out.println(myQuiz);

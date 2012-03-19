@@ -14,7 +14,7 @@ import org.jdom.input.SAXBuilder;
  * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
  * 
  */
-public class XmlToJava implements IxmlToJava{
+public class XmlToJava implements IxmlToJava {
 
 	/**
 	 * This method is used to load xml document and launch the parsing of the
@@ -237,10 +237,9 @@ public class XmlToJava implements IxmlToJava{
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
 		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
-		boolean shuffleanswers = Boolean.valueOf(
-				e.getChildTextTrim("shuffleanswers")).booleanValue();
-		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
-				.booleanValue();
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
+		int hidden = Integer.parseInt(e.getChildTextTrim("hidden"));
 		String image = e.getChildTextTrim("image");
 		String image_64 = null;
 		if (image != null) {
@@ -268,10 +267,9 @@ public class XmlToJava implements IxmlToJava{
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
 		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
-		boolean shuffleanswers = Boolean.valueOf(
-				e.getChildTextTrim("shuffleanswers")).booleanValue();
-		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
-				.booleanValue();
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
+		int hidden = Integer.parseInt(e.getChildTextTrim("hidden"));
 
 		List<Answer> answers = new ArrayList<Answer>();
 		List<?> answersRes = e.getChildren("answer");
@@ -286,7 +284,7 @@ public class XmlToJava implements IxmlToJava{
 		if (!(image.equals(""))) {
 			image_64 = e.getChildText("image_64");
 		}
-		boolean single = Boolean.valueOf(e.getChildTextTrim("single"))
+		int single = Boolean.valueOf(e.getChildTextTrim("single"))
 				.booleanValue();
 		String correctFeedback = e.getChild("correctfeedback")
 				.getChildTextTrim("text");
@@ -321,10 +319,9 @@ public class XmlToJava implements IxmlToJava{
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
 		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
-		boolean shuffleanswers = Boolean.valueOf(
-				e.getChildTextTrim("shuffleanswers")).booleanValue();
-		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
-				.booleanValue();
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
+		int hidden = Integer.parseInt(e.getChildTextTrim("hidden"));
 		List<Answer> answers = new ArrayList<Answer>();
 
 		List<?> answersRes = e.getChildren("answer");
@@ -359,10 +356,9 @@ public class XmlToJava implements IxmlToJava{
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
 		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
-		boolean shuffleanswers = Boolean.valueOf(
-				e.getChildTextTrim("shuffleanswers")).booleanValue();
-		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
-				.booleanValue();
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
+		int hidden = Integer.parseInt(e.getChildTextTrim("hidden"));
 		List<Answer> answers = new ArrayList<Answer>();
 
 		List<?> answersRes = e.getChildren("answer");
@@ -401,10 +397,9 @@ public class XmlToJava implements IxmlToJava{
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
 		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
-		boolean shuffleanswers = Boolean.valueOf(
-				e.getChildTextTrim("shuffleanswers")).booleanValue();
-		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
-				.booleanValue();
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
+		int hidden = Integer.parseInt(e.getChildTextTrim("hidden"));
 		String image = e.getChildTextTrim("image");
 		String image_64 = null;
 		if (image != null) {
@@ -442,8 +437,8 @@ public class XmlToJava implements IxmlToJava{
 		String name = e.getChild("name").getChildTextTrim("text");
 		String questionText = e.getChild("questiontext").getChildTextTrim(
 				"text");
-		boolean shuffleanswers = Boolean.valueOf(
-				e.getChildTextTrim("shuffleanswers")).booleanValue();
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
 		String generalFeedback = e.getChild("generalfeedback")
 				.getChildTextTrim("text");
 
@@ -467,10 +462,9 @@ public class XmlToJava implements IxmlToJava{
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
 		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
-		boolean shuffleanswers = Boolean.valueOf(
-				e.getChildTextTrim("shuffleanswers")).booleanValue();
-		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
-				.booleanValue();
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
+		int hidden = Integer.parseInt(e.getChildTextTrim("hidden"));
 		List<Answer> answers = new ArrayList<Answer>();
 
 		List<?> answersRes = e.getChildren("answer");
@@ -508,10 +502,9 @@ public class XmlToJava implements IxmlToJava{
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
 		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
-		boolean shuffleanswers = Boolean.valueOf(
-				e.getChildTextTrim("shuffleanswers")).booleanValue();
-		boolean hidden = Boolean.valueOf(e.getChildTextTrim("hidden"))
-				.booleanValue();
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
+		int hidden = Integer.parseInt(e.getChildTextTrim("hidden"));
 		ArrayList<Answer> answers = new ArrayList<Answer>();
 
 		List<?> answersRes = e.getChildren("answer");
