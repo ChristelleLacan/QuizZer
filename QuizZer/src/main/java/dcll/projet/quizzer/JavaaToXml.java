@@ -24,6 +24,8 @@ public class JavaaToXml {
 		ArrayList<Question> questions = new ArrayList<Question>();
 
 		List<Answer> answers = new ArrayList<Answer>();
+		List<DatasetDefinition> datasetDefinition =new ArrayList<DatasetDefinition>();
+		List<Unit> unit=new ArrayList<Unit>();
 		Answer a = new Answer(
 				"Une architecture N-tiers est uniquement une architecture à base de Web Services",
 				"0",
@@ -34,6 +36,11 @@ public class JavaaToXml {
 				"33.333", "", null, null, null, null);
 		answers.add(a);
 		answers.add(a1);
+		
+		Description description=new Description("Consigne dispositif électronique", "Pas de calculatrice !", 0,
+				0, false, false,
+				"moodle_auto_format","backupdata/446px-Uncle_Sam_pointing_finger_.jpg", null);
+		questions.add(description);
 
 		Question quest = new MultipleChoice("Architectures N tiers",
 				"Cocher les assertions vraies.", 1, 0.1, false, false, answers,
@@ -43,6 +50,21 @@ public class JavaaToXml {
 
 		questions.add(quest);
 		// questions.add(q1);
+		
+	/*	Calculated calculated=new Calculated("Aire du cercle",
+				"Calcul de l'aire du cercle ayant pour rayon {R}",
+				"moodle_auto_format",
+				"backupdata/446px-Uncle_Sam_pointing_finger_.jpg", null,
+				 1,null,1, false, false,
+				 answers,unit, datasetDefinition);
+		questions.add(calculated);
+		*/
+		TrueFalse truefalse=new TrueFalse("Tomcat et JEE", "Tomcat est un conteneur implémentant toutes les spécifications JEE", 1,
+				0.1,false, false,
+				null,  answers, "moodle_auto_format",
+				"backupdata/446px-Uncle_Sam_pointing_finger_.jpg",null);
+		questions.add(truefalse);
+		
 		Questionnaire quiz = new Questionnaire("quiz", questions);
 
 		for (int i = 0; i < questions.size(); i++) {
@@ -67,11 +89,54 @@ public class JavaaToXml {
 				convertTrueFalse((TrueFalse) q, question);
 			} else if (q instanceof NumericalReponse) {
 				convertNumericalReponse((NumericalReponse) q, question);
+			} else if (q instanceof Description) {
+				convertDescription((Description) q, question);
 			}
 		}
 
 		affiche();
 		enregistre();
+	}
+	private static void convertDescription(Description q, Element question) {
+		// TODO Auto-generated method stub
+		Attribute type =new Attribute("type", q.getType());
+		
+		question.setAttribute(type);
+		Element name = new Element("name");
+		question.addContent(name);
+		Element text = new Element("text");
+		text.setText("Consigne dispositif électronique");
+		name.addContent(text);
+		text.addContent(q.getName());
+		Element questiontext = new Element("questionText");
+		question.addContent(questiontext);
+		Attribute format = new Attribute("format", q.getFormat());
+		questiontext.setAttribute(format);
+		text = new Element("text");
+		questiontext.addContent(text);
+		text.addContent(q.getQuestionText());
+		
+		Element generalfeedback = new Element("generalfeedback");
+		question.addContent(generalfeedback);
+		text = new Element("text");
+		generalfeedback.addContent(text);
+		text.addContent(q.getGeneralfeedback());
+		Element defaultgradre = new Element("defaultgrade");
+		question.addContent(defaultgradre);
+		defaultgradre.addContent("" + q.getDefaultGrade());
+
+		Element penalty = new Element("penalty");
+		question.addContent(penalty);
+		penalty.addContent("" + q.getPenalty());
+
+		Element hidden = new Element("hidden");
+		question.addContent(hidden);
+		hidden.addContent("" + q.isHidden());
+		Element shuffleanswers = new Element("shuffleanswer");
+		question.addContent(shuffleanswers);
+		shuffleanswers.addContent("" + q.isShuffleAnswers());
+
+		
 	}
 
 	private static void convertCalculated(Calculated q, Element question) {

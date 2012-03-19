@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiz>
+  <question type="Description">
+    <name>
+      <text>Consigne dispositif électroniqueConsigne dispositif électronique</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Pas de calculatrice !</text>
+    </questionText>
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0.0</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
+  </question>
   <question type="MultipleChoice">
     <name>
       <text>Architectures N tiers</text>
@@ -26,6 +41,34 @@
       <text>KO</text>
     </incorrectfeedback>
     <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Une architecture N-tiers est uniquement une architecture à base de Web Services</text>
+      <feedback>
+        <text>Une architecture distribuée peut reposer par exemple sur RMI</text>
+      </feedback>
+    </answer>
+    <answer fraction="33.333">
+      <text>Une architecture client serveur est une architecture N-tiers</text>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+  </question>
+  <question type="TrueFalse">
+    <name>
+      <text>Tomcat et JEE</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Tomcat est un conteneur implémentant toutes les spécifications JEE</text>
+    </questionText>
+    <image>backupdata/446px-Uncle_Sam_pointing_finger_.jpg</image>
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
     <answer fraction="0">
       <text>Une architecture N-tiers est uniquement une architecture à base de Web Services</text>
       <feedback>
