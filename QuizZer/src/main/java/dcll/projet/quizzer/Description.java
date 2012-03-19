@@ -17,12 +17,13 @@ public class Description extends Question {
 	private String type;
 	private String image;
 	private String image_64;
+	private String generalfeedback;
 
 	/**
 	 * Constructor :
-	 * 
 	 * @param mName
 	 * @param mQuestionText
+	 * @param mGeneralfeedback
 	 * @param mDefaultgrade
 	 * @param mPenalty
 	 * @param mShuffleanswers
@@ -31,12 +32,14 @@ public class Description extends Question {
 	 * @param mImage
 	 * @param mImage_64
 	 */
-	public Description(String mName, String mQuestionText, int mDefaultgrade,
-			double mPenalty, boolean mShuffleanswers, boolean mHidden,
-			String mFormat, String mImage, String mImage_64) {
+	public Description(String mName, String mQuestionText,
+			String mGeneralfeedback, int mDefaultgrade, double mPenalty,
+			boolean mShuffleanswers, boolean mHidden, String mFormat,
+			String mImage, String mImage_64) {
 		super(mName);
 		type = "Description";
 		questionText = mQuestionText;
+		generalfeedback = mGeneralfeedback;
 		format = mFormat;
 		defaultGrade = mDefaultgrade;
 		penalty = mPenalty;
@@ -57,4 +60,46 @@ public class Description extends Question {
 				+ "questionsText : " + questionText + "\n" + "image : " + image
 				+ "\n" + "image_64 : " + image_64;
 	}
+
+	
+	public String getGeneralfeedback() {
+		return generalfeedback;
+	}
+
+	public String getQuestionText() {
+		return questionText;
+	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public int getDefaultGrade() {
+		return defaultGrade;
+	}
+
+	public double getPenalty() {
+		return penalty;
+	}
+
+	public boolean isHidden() {
+		return hidden;
+	}
+
+	public boolean isShuffleAnswers() {
+		return shuffleAnswers;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public String getImage_64() {
+		return image_64;
+	}
+
 }

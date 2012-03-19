@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiz>
+  <question>
+    <category>
+      <text>$course$/Défaut pour 1SA3GL1</text>
+    </category>
+  </question>
   <question type="MultipleChoice">
     <name>
       <text>Architectures N tiers</text>

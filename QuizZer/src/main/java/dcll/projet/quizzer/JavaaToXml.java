@@ -34,15 +34,15 @@ public class JavaaToXml {
 				"33.333", "", null, null, null, null);
 		answers.add(a);
 		answers.add(a1);
-
-		Question quest = new MultipleChoice("Architectures N tiers",
+		Question quest = new Category("$course$/Défaut pour 1SA3GL1");
+		Question quest1 = new MultipleChoice("Architectures N tiers",
 				"Cocher les assertions vraies.", 1, 0.1, false, false, answers,
 				"moodle_auto_format",
 				"backupdata/446px-Uncle_Sam_pointing_finger_.jpg", null, "",
 				"OK", "", "KO", "abc", false);
 
 		questions.add(quest);
-		// questions.add(q1);
+		questions.add(quest1);
 		Questionnaire quiz = new Questionnaire("quiz", questions);
 
 		for (int i = 0; i < questions.size(); i++) {
@@ -67,11 +67,59 @@ public class JavaaToXml {
 				convertTrueFalse((TrueFalse) q, question);
 			} else if (q instanceof NumericalReponse) {
 				convertNumericalReponse((NumericalReponse) q, question);
+			} else if (q instanceof Description){
+				convertDescription((Description) q, question);
 			}
 		}
 
 		affiche();
 		enregistre();
+	}
+
+	private static void convertDescription(Description q, Element question) {
+		Attribute type = new Attribute("type", q.getType());
+		question.setAttribute(type);
+
+		Element name = new Element("name");
+		question.addContent(name);
+		Element text = new Element("text");
+		name.addContent(text);
+		text.addContent(q.getName());
+
+		Element questiontext = new Element("questionText");
+		question.addContent(questiontext);
+		Attribute format = new Attribute("format", q.getFormat());
+		questiontext.setAttribute(format);
+		text = new Element("text");
+		questiontext.addContent(text);
+		text.addContent(q.getQuestionText());
+
+		Element image = new Element("image");
+		question.addContent(image);
+		image.addContent(q.getImage());
+
+		Element generalfeedback = new Element("generalfeedback");
+		question.addContent(generalfeedback);
+		text = new Element("text");
+		generalfeedback.addContent(text);
+		text.addContent(q.getGeneralfeedback());
+
+		Element defaultgradre = new Element("defaultgrade");
+		question.addContent(defaultgradre);
+		defaultgradre.addContent("" + q.getDefaultGrade());
+
+		Element penalty = new Element("penalty");
+		question.addContent(penalty);
+		penalty.addContent("" + q.getPenalty());
+
+		Element hidden = new Element("hidden");
+		question.addContent(hidden);
+		hidden.addContent("" + q.isHidden());
+
+		Element shuffleanswers = new Element("shuffleanswer");
+		question.addContent(shuffleanswers);
+		shuffleanswers.addContent("" + q.isShuffleAnswers());
+		
 	}
 
 	private static void convertCalculated(Calculated q, Element question) {
