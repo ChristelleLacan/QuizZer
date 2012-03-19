@@ -37,7 +37,7 @@ public class JavaToXml extends DefaultHandler{
 		if(qName.equals("question") )
 			{
 			inQuestion=true;
-			answer=new Answer();
+		//	answer=new Answer();
 			try{
 				String typ = attributes.getValue("truefalse");
 				//if()
@@ -105,7 +105,7 @@ public class JavaToXml extends DefaultHandler{
 		System.out.print(" ( " + lecture.copyValueOf(ch,start,length)+ " ) ");
 		
 		if(inQuestion){
-			answer=new Answer();
+			//answer=new Answer();
 			answer.setQuestion(lecture);
 		}
 		else if(inAnswer && inQuestion){
