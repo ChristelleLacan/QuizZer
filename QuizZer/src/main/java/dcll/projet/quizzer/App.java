@@ -8,8 +8,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        XmlToJava myParser = new XmlToJava();
-        myParser.loadDocument();
-        myParser.run();
+        XmlToJava myXmlToJavaparser = new XmlToJava();
+        myXmlToJavaparser.loadDocument();
+        myXmlToJavaparser.run();
     }
 }

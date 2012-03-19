@@ -36,8 +36,12 @@ public class JavaToXml extends DefaultHandler{
 					throws SAXException {
 		if(qName.equals("question") )
 			{
+<<<<<<< HEAD
 			inQuestion=true;
 		//	answer=new Answer();
+=======
+			inTruefalse=true;
+>>>>>>> 215521ab750702394c352c52cd5c61a0bbb421a9
 			try{
 				String typ = attributes.getValue("truefalse");
 				//if()
@@ -47,7 +51,7 @@ public class JavaToXml extends DefaultHandler{
 				System.out.println("la question n'est pas de type truefalse");
 				throw new SAXException(e);
 			}
-			
+			answer=new Answer(qName, 0, qName);
 		
 			} 
 		else if(qName.equals("answer") && inQuestion){
@@ -104,8 +108,13 @@ public class JavaToXml extends DefaultHandler{
 	    lecture=new String(ch,start,length);
 		System.out.print(" ( " + lecture.copyValueOf(ch,start,length)+ " ) ");
 		
+<<<<<<< HEAD
 		if(inQuestion){
 			//answer=new Answer();
+=======
+		if(inTruefalse){
+			answer=new Answer(lecture, length, lecture);
+>>>>>>> 215521ab750702394c352c52cd5c61a0bbb421a9
 			answer.setQuestion(lecture);
 		}
 		else if(inAnswer && inQuestion){

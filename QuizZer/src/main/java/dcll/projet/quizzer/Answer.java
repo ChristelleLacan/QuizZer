@@ -1,52 +1,80 @@
 package dcll.projet.quizzer;
 
+/**
+ * This class contains definition of Answers used in questions
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
 public class Answer {
-	private String type;
-	private String question;
-
-	public String getQuestion() {
-		return question;
-	}
-	public void setQuestion(String question) {
-		this.question = question;
-	}
+	private String fraction;
+	private String tolerance;
+	private String toleranceType;
+	private String correctAnswerFormat;
+	private String correctAnswerLength;
+	private String feedback;
 	private String text;
-	public String getText() {
-		return text;
+
+	/**
+	 * Constructor :
+	 * 
+	 * @param mText
+	 * @param mFraction
+	 * @param mFeedback
+	 * @param mTolerance
+	 * @param mToleranceType
+	 * @param mCorrectAnswerFormat
+	 * @param mCorrectAnswerLenght
+	 */
+	public Answer(String mText, String mFraction, String mFeedback,
+			String mTolerance, String mToleranceType,
+			String mCorrectAnswerFormat, String mCorrectAnswerLenght) {
+		text = mText;
+		fraction = mFraction;
+		feedback = mFeedback;
+		tolerance = mTolerance;
+		toleranceType = mToleranceType;
+		correctAnswerFormat = mCorrectAnswerFormat;
+		correctAnswerLength = mCorrectAnswerLenght;
 	}
-	public void setText(String text) {
-		this.text = text;
+
+	/**
+	 * toString
+	 */
+	public String toString() {
+		return "\n--Text : " + text + "\n\t\tFraction : " + fraction
+				+ "\n\t\tFeedback : " + feedback + "\n\t\tTolerance : "
+				+ tolerance + "\n\t\tTolerance type : " + toleranceType
+				+ "\n\t\tCorrect Answer Format : " + correctAnswerFormat
+				+ "\n\t\tCorrect Answer Lenght : " + correctAnswerLength;
 	}
-	public int getFraction() {
+
+	public String getFraction() {
 		return fraction;
 	}
-	public void setFraction(int fraction) {
-		this.fraction = fraction;
-	}
+
 	public String getFeedback() {
 		return feedback;
 	}
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
+
+	public String getText() {
+		return text;
 	}
-	public String getType() {
-		return type;
+
+	public String getTolerance() {
+		return tolerance;
 	}
-	public void setType(String type) {
-		this.type = type;
+
+	public String getToleranceType() {
+		return toleranceType;
 	}
-	private int fraction;
-	private String feedback;
-	
-	public Answer(String text, int fraction, String feedback) {
-		this.text = text;
-		this.fraction = fraction;
-		this.feedback = feedback;
+
+	public String getCorrectAnswerFormat() {
+		return correctAnswerFormat;
 	}
-	
-	public String toString(){
-		return "Text : "+ text + 
-				"\t Fraction : "+fraction + 
-				"\t Feedback : "+feedback;
+
+	public String getCorrectAnswerLength() {
+		return correctAnswerLength;
 	}
+
 }

@@ -1,26 +1,38 @@
 package dcll.projet.quizzer;
 
-import java.util.List;
-//
-//
-//  @ Project : QuizZer
-//  @ File Name : Questionnaire.java
-//  @ Date : 05/03/2012
-//  @ Author : Clement Bardou
-//
-//
+import java.util.ArrayList;
 
+/**
+ * This class contains the definition of a Questionary
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
 public class Questionnaire {
 	private String quizName;
-	private List<Question> questions;
+	private ArrayList<Question> questions = new ArrayList<Question>();
 
-	public Questionnaire(String quizName, List<Question> questions) {
+	/**
+	 * Constructor :
+	 * 
+	 * @param quizName
+	 * @param questions
+	 */
+	public Questionnaire(String quizName, ArrayList<Question> questions) {
 		this.quizName = quizName;
 		this.questions = questions;
 	}
 
-	public List<Question> getQuestions() {
+	public ArrayList<Question> getQuestions() {
 		return questions;
+	}
+
+	/**
+	 * toString
+	 */
+	public String toString() {
+		return "Quiz name : " + quizName + " \n\nQuestions : \n"
+				+ questions.toString();
 	}
 
 }

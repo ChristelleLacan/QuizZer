@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="MultipleChoice">
+    <name>
+      <text>Architectures N tiers</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Cocher les assertions vraies.</text>
+    </questionText>
+    <image>backupdata/446px-Uncle_Sam_pointing_finger_.jpg</image>
+    <image_base64 />
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
+    <correctfeedback>
+      <text>OK</text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text>KO</text>
+    </incorrectfeedback>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Une architecture N-tiers est uniquement une architecture à base de Web Services</text>
+      <feedback>
+        <text>Une architecture distribuée peut reposer par exemple sur RMI</text>
+      </feedback>
+    </answer>
+    <answer fraction="33.333">
+      <text>Une architecture client serveur est une architecture N-tiers</text>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+  </question>
+</quiz>
+
