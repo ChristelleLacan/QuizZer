@@ -9,7 +9,19 @@ import org.jdom.Element;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-public class JavaaToXml {
+import dcll.projet.quizzer.typesQuestions.Calculated;
+import dcll.projet.quizzer.typesQuestions.Category;
+import dcll.projet.quizzer.typesQuestions.Cloze;
+import dcll.projet.quizzer.typesQuestions.Description;
+import dcll.projet.quizzer.typesQuestions.Essay;
+import dcll.projet.quizzer.typesQuestions.Matching;
+import dcll.projet.quizzer.typesQuestions.MultipleChoice;
+import dcll.projet.quizzer.typesQuestions.Numerical;
+import dcll.projet.quizzer.typesQuestions.ShortAnswer;
+import dcll.projet.quizzer.typesQuestions.TrueFalse;
+import dcll.projet.quizzer.typesQuestions.element.Answer;
+
+public class JavaToXml {
 
 	private static Element racine = new Element("quiz");
 	private static Document document = new Document(racine);
@@ -408,11 +420,11 @@ public class JavaaToXml {
 
 		Element hidden = new Element("hidden");
 		question.addContent(hidden);
-		hidden.addContent("" + q.isHidden());
+		hidden.addContent("" + q.getHidden());
 
 		Element shuffleanswers = new Element("shuffleanswer");
 		question.addContent(shuffleanswers);
-		shuffleanswers.addContent("" + q.isShuffleAnswers());
+		shuffleanswers.addContent("" + q.getShuffleAnswers());
 
 		Element answer, feedback;
 		Attribute fraction;

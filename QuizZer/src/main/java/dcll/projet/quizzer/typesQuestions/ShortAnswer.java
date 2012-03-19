@@ -1,6 +1,9 @@
-package dcll.projet.quizzer;
+package dcll.projet.quizzer.typesQuestions;
 
 import java.util.List;
+
+import dcll.projet.quizzer.Question;
+import dcll.projet.quizzer.typesQuestions.element.Answer;
 
 /**
  * 

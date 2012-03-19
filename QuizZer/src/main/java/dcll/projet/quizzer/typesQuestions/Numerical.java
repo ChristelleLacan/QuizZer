@@ -1,23 +1,26 @@
-package dcll.projet.quizzer;
+package dcll.projet.quizzer.typesQuestions;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import dcll.projet.quizzer.Question;
+import dcll.projet.quizzer.typesQuestions.element.Answer;
+
 /**
- * This class contains definition of Essay questions
+ * This class contains definition of Numerical questions.
  * 
  * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
  * 
  */
-public class Essay extends Question {
+public class Numerical extends Question {
 
+	private String generalfeedback;
 	private String questionText;
 	private String format;
 	private int defaultGrade;
 	private double penalty;
 	private int hidden;
 	private int shuffleAnswers;
-	private String generalfeedback;
 	private List<Answer> answers = new ArrayList<Answer>();
 	private String type;
 	private String image;
@@ -37,22 +40,22 @@ public class Essay extends Question {
 	 * @param mImage
 	 * @param mImage_64
 	 */
-	public Essay(String mName, String mQuestionText, int mDefaultgrade,
-			double mPenalty, int mShuffleanswers, int mHidden,
-			String mGeneralfeedback, List<Answer> mAnswers, String mFormat,
-			String mImage, String mImage_64) {
+	public Numerical(String mName, String mQuestionText, int mDefaultgrade,
+			double mPenalty, int mShuffleanswers, String mGeneralfeedback,
+			int mHidden, List<Answer> mAnswers, String mFormat, String mImage,
+			String mImage_64) {
 		super(mName);
 		questionText = mQuestionText;
 		format = mFormat;
 		defaultGrade = mDefaultgrade;
 		penalty = mPenalty;
 		hidden = mHidden;
+		generalfeedback = mGeneralfeedback;
 		shuffleAnswers = mShuffleanswers;
 		answers = mAnswers;
-		generalfeedback = mGeneralfeedback;
-		type = "Essay";
 		image = mImage;
 		image_64 = mImage_64;
+		type = "Numerical";
 	}
 
 	/**
@@ -60,12 +63,12 @@ public class Essay extends Question {
 	 */
 	public String toString() {
 		return "\n----Ceci est : une " + type + "  \n" + super.toString()
-				+ "format : " + format + "defaultgrade : " + defaultGrade
-				+ "\n" + "penalty : " + penalty + "\n" + "shuffleanswers : "
-				+ shuffleAnswers + "\n" + "hidden : " + hidden + "\n"
-				+ "questionsText : " + questionText + "\n" + "image : " + image
-				+ "\n" + "image_64 : " + image_64 + "\n" + "answers : "
-				+ answers.toString() + "\n";
+				+ "format : " + format + "\n" + "defaultgrade : "
+				+ defaultGrade + "\n" + "penalty : " + penalty + "\n"
+				+ "shuffleanswers : " + shuffleAnswers + "\n" + "hidden : "
+				+ hidden + "\n" + "questionsText : " + questionText + "\n"
+				+ "image : " + image + "\n" + "image_64 : " + image_64 + "\n"
+				+ "answers : " + answers.toString() + "\n";
 	}
 
 	public String getGeneralfeedback() {
@@ -88,11 +91,11 @@ public class Essay extends Question {
 		return penalty;
 	}
 
-	public int isHidden() {
+	public int getHidden() {
 		return hidden;
 	}
 
-	public int isShuffleAnswers() {
+	public int getShuffleAnswers() {
 		return shuffleAnswers;
 	}
 

@@ -1,6 +1,11 @@
-package dcll.projet.quizzer;
+package dcll.projet.quizzer.typesQuestions;
 
 import java.util.ArrayList;
+
+import dcll.projet.quizzer.Question;
+import dcll.projet.quizzer.typesQuestions.element.Answer;
+import dcll.projet.quizzer.typesQuestions.element.DatasetDefinition;
+import dcll.projet.quizzer.typesQuestions.element.Unit;
 
 /**
  * This class contains definition of Calculated Questions

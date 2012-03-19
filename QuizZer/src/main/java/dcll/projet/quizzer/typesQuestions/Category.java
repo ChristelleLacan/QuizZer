@@ -1,4 +1,6 @@
-package dcll.projet.quizzer;
+package dcll.projet.quizzer.typesQuestions;
+
+import dcll.projet.quizzer.Question;
 
 /**
  * This class contains definition of Categoty Questions

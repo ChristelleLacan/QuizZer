@@ -7,6 +7,21 @@ import java.util.List;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
+import dcll.projet.quizzer.typesQuestions.Calculated;
+import dcll.projet.quizzer.typesQuestions.Category;
+import dcll.projet.quizzer.typesQuestions.Cloze;
+import dcll.projet.quizzer.typesQuestions.Description;
+import dcll.projet.quizzer.typesQuestions.Essay;
+import dcll.projet.quizzer.typesQuestions.Matching;
+import dcll.projet.quizzer.typesQuestions.MultipleChoice;
+import dcll.projet.quizzer.typesQuestions.Numerical;
+import dcll.projet.quizzer.typesQuestions.ShortAnswer;
+import dcll.projet.quizzer.typesQuestions.TrueFalse;
+import dcll.projet.quizzer.typesQuestions.element.Answer;
+import dcll.projet.quizzer.typesQuestions.element.DatasetDefinition;
+import dcll.projet.quizzer.typesQuestions.element.DatasetItem;
+import dcll.projet.quizzer.typesQuestions.element.Unit;
+
 /**
  * This class contains the definition of the xmlToJava Parser used to parse xml
  * document into java objects
@@ -584,8 +599,10 @@ public class XmlToJava implements IxmlToJava {
 			Element courant = (Element) i.next();
 			answers.add(xmlAnswerToJava(courant));
 		}
-		
-		TrueFalse myQuestion = new TrueFalse(name, questionText, defaultgrade, penalty, shuffleanswers, hidden, generalFeedback, answers, format, image, image_64);
+
+		TrueFalse myQuestion = new TrueFalse(name, questionText, defaultgrade,
+				penalty, shuffleanswers, hidden, generalFeedback, answers,
+				format, image, image_64);
 		quiz.getQuestions().add(myQuestion);
 
 	}

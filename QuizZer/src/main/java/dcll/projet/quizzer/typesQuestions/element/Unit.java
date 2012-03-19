@@ -1,4 +1,4 @@
-package dcll.projet.quizzer;
+package dcll.projet.quizzer.typesQuestions.element;
 
 /**
  * This class contains the definition of Unit used in Calculated questions

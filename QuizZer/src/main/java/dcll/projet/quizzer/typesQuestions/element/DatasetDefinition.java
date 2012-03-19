@@ -1,4 +1,4 @@
-package dcll.projet.quizzer;
+package dcll.projet.quizzer.typesQuestions.element;
 
 import java.util.ArrayList;
 

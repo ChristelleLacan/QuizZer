@@ -371,5 +371,33 @@ b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
       </feedback>
     </answer>
   </question>
+  <question type="TrueFalse">
+    <name>
+      <text>Tomcat et JEE</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Tomcat est un conteneur implémentant toutes les spécifications JEE.</text>
+    </questionText>
+    <image />
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>1.0</penalty>
+    <hidden>0</hidden>
+    <shuffleanswer>0</shuffleanswer>
+    <answer fraction="0">
+      <text>true</text>
+      <feedback>
+        <text>Tomcat est un conteneur Web uniquement.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>false</text>
+      <feedback>
+        <text>Tomcat est un conteneur Web uniquement.</text>
+      </feedback>
+    </answer>
+  </question>
 </quiz>
 

@@ -1,53 +1,74 @@
-package dcll.projet.quizzer;
+package dcll.projet.quizzer.typesQuestions;
 
 import java.util.ArrayList;
 import java.util.List;
-//
-//
-//  @ Project : QuizZer
-//  @ File Name : NumericalReponse.java
-//  @ Date : 05/03/2012
-//  @ Author : Clement Bardou
-//
-//
 
-public class NumericalReponse extends Question {
+import dcll.projet.quizzer.Question;
+import dcll.projet.quizzer.typesQuestions.element.Answer;
+
+/**
+ * This class contains the definition of True/False questions
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ * 
+ */
+public class TrueFalse extends Question {
 
 	private String questionText;
 	private String format;
 	private int defaultGrade;
 	private double penalty;
-	private boolean hidden;
-	private boolean shuffleAnswers;
+	private int hidden;
+	private int shuffleAnswers;
 	private String generalfeedback;
 	private List<Answer> answers = new ArrayList<Answer>();
 	private String type;
 	private String image;
 	private String image_64;
-	
-	public NumericalReponse(String mName, String mQuestionText, int mDefaultgrade,
-			double mPenalty, boolean mShuffleanswers, boolean mHidden,String mGeneralfeedback,
-			List<Answer> mAnswers, String mFormat,String mImage,String mImage_64) {
+
+	/**
+	 * Constructor :
+	 * 
+	 * @param mName
+	 * @param mQuestionText
+	 * @param mDefaultgrade
+	 * @param mPenalty
+	 * @param mShuffleanswers
+	 * @param mHidden
+	 * @param mAnswers
+	 * @param mFormat
+	 * @param mImage
+	 * @param mImage_64
+	 */
+	public TrueFalse(String mName, String mQuestionText, int mDefaultgrade,
+			double mPenalty, int mShuffleanswers, int mHidden,
+			String mGeneralfeedback, List<Answer> mAnswers, String mFormat,
+			String mImage, String mImage_64) {
 		super(mName);
+		type = "TrueFalse";
 		questionText = mQuestionText;
 		format = mFormat;
 		defaultGrade = mDefaultgrade;
 		generalfeedback = mGeneralfeedback;
 		penalty = mPenalty;
+		shuffleAnswers = mShuffleanswers;
 		hidden = mHidden;
 		answers = mAnswers;
 		image = mImage;
 		image_64 = mImage_64;
-		type = "NumericalReponse";
 	}
-	
-	public String toString(){
-		return "\n----Ceci est : une NumericalReponse  \n" + super.toString()
+
+	/**
+	 * toString
+	 */
+	public String toString() {
+		return "\n----Ceci est : une " + type + "  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade
 				+ "\n" + "penalty : " + penalty + "\n" + "shuffleanswers : "
 				+ shuffleAnswers + "\n" + "hidden : " + hidden + "\n"
 				+ "questionsText : " + questionText + "\n" + "image : " + image
-				+ "\n" + "answers : " + answers.toString() + "\n";
+				+ "\n" + "image_64 : " + image_64 + "\n" + "answers : "
+				+ answers.toString() + "\n";
 	}
 
 	public String getGeneralfeedback() {
@@ -70,11 +91,11 @@ public class NumericalReponse extends Question {
 		return penalty;
 	}
 
-	public boolean isHidden() {
+	public int getHidden() {
 		return hidden;
 	}
 
-	public boolean isShuffleAnswers() {
+	public int getShuffleAnswers() {
 		return shuffleAnswers;
 	}
 
