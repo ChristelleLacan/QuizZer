@@ -10,7 +10,7 @@ public class Category extends Question {
 
 	private String category;
 	private String type;
-	private static String name = "Category";
+	private static String name;
 
 	/**
 	 * Constructor :
@@ -20,7 +20,7 @@ public class Category extends Question {
 	public Category(String Ctext) {
 		super(name);
 		category = Ctext;
-		type = "Category";
+		type = "category";
 	}
 
 	/**
@@ -35,4 +35,13 @@ public class Category extends Question {
 		return category;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	
 }

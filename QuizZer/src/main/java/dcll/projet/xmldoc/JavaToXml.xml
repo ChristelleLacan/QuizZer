@@ -1,9 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiz>
-  <question>
+  <question type="category">
     <category>
       <text>$course$/Défaut pour 1SA3GL1</text>
     </category>
+  </question>
+  <question type="Calculated">
+    <name>
+      <text>Aire du cercle</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Calcul de l'aire du cercle ayant pour rayon {R}</text>
+    </questionText>
+    <image />
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
+    <answer fraction="100">
+      <text>3.14 * {R}*{R}</text>
+      <tolerance>0.01</tolerance>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+    <unit>
+      <multiplier>1</multiplier>
+      <unit_name>m2</unit_name>
+    </unit>
+    <dataset_definitions>
+      <dataset_definition>
+        <status>
+          <text>shared</text>
+        </status>
+        <name>
+          <text>R</text>
+        </name>
+        <type>calculated</type>
+        <distribution>
+          <text>uniform</text>
+        </distribution>
+        <minimum>
+          <text>1.0</text>
+        </minimum>
+        <maximum>
+          <text>10.0</text>
+        </maximum>
+        <decimals>
+          <text>1</text>
+        </decimals>
+        <itemcount>10</itemcount>
+      </dataset_definition>
+    </dataset_definitions>
+    <dataset_items>
+      <dataset_item>
+        <number>1</number>
+        <value>6.9</value>
+      </dataset_item>
+    </dataset_items>
+  </question>
+  <question type="Essay">
+    <name>
+      <text>Question ouverte</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Ecrire un programme qui affiche Hello world</text>
+    </questionText>
+    <image />
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.0</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
+    <answer fraction="0">
+      <text />
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+  </question>
+  <question type="Matching">
+    <name>
+      <text>Serveur d'application / éditeurs</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Relier les serveurs d'applications avec les bons éditeurs</text>
+    </questionText>
+    <image />
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
+    <subquestion>
+      <text>JBOSS</text>
+      <answer>
+        <text>Redhat</text>
+      </answer>
+    </subquestion>
+    <subquestion>
+      <text>Websphere</text>
+      <answer>
+        <text>IBM</text>
+      </answer>
+    </subquestion>
+    <subquestion>
+      <text>GlassFish</text>
+      <answer>
+        <text>Oracle</text>
+      </answer>
+    </subquestion>
+    <subquestion>
+      <text>Tomcat</text>
+      <answer>
+        <text>Fondation Apache</text>
+      </answer>
+    </subquestion>
+  </question>
+  <question type="Cloze">
+    <name>
+      <text>Question "Cloze" (composite ?)</text>
+    </name>
+    <questionText>
+      <text>Cette question comporte du texte dans lequel on a directement intégré des réponses à choix multiples {1:MULTICHOICE:Mauvaise réponse#Feedback pour cette mauvaise réponse~Une autre mauvaise réponse#Feedback pour cette autre mauvaise réponse~=Bonne réponse#Feedback pour la bonne réponse~%50%Réponse qui vaut la moitié des points#Feedback pour la question qui vaut la moitié des points} ; vous devez maintenant répondre à une question courte{1:SHORTANSWER:Mauvaise réponse#Feedback pour cette mauvaise réponse~=Bonne réponse#Feedback pour la bonne réponse~%50%Réponse qui vaut la moitié des points#Feedback pour la question qui vaut la moitié des points}. Nous avons finalement une question qui demande une réponse numérique avec point décimal {2:NUMERICAL:=23.8:0.1#Feedback pour la bonne réponse 23.8~%50%23.8:2#Feedback pour la réponse qui donne la moitié des points}.
+
+Remarquez que les adresses URL comme www.moodle.org et les binettes :-) sont correctement interprétées :
+a) Est-ce bien? {:MULTICHOICE:=Oui#Bonne réponse~Non#Votre opinion nous indiffère !}
+b) Quelle note désirez-vous? {3:NUMERICAL:=3:2}</text>
+    </questionText>
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <shuffleanswer>false</shuffleanswer>
+  </question>
+  <question type="MultipleChoice">
+    <name>
+      <text>Architecture à 3 niveaux ?</text>
+    </name>
+    <questionText format="html">
+      <text>Que désigne une architecture à 3 niveaux ?</text>
+    </questionText>
+    <image>backupdata/446px-Uncle_Sam_pointing_finger_.jpg</image>
+    <image_base64 />
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
+    <correctfeedback>
+      <text />
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text />
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text />
+    </incorrectfeedback>
+    <answernumbering>none</answernumbering>
+    <answer fraction="-100">
+      <text>Une architecture MVC</text>
+      <feedback>
+        <text>Une application  non distribuée peut implémentée MVC.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Une architecture N tiers ou N vaut 3</text>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
   </question>
   <question type="MultipleChoice">
     <name>
@@ -15,7 +189,7 @@
     <image>backupdata/446px-Uncle_Sam_pointing_finger_.jpg</image>
     <image_base64 />
     <generalfeedback>
-      <text />
+      <text>Rappel N tiers : architectures multi-niveaux pouvant être distribuées sur plusieurs noeuds physique d'un réseau.</text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0.1</penalty>
@@ -41,6 +215,77 @@
       <text>Une architecture client serveur est une architecture N-tiers</text>
       <feedback>
         <text />
+      </feedback>
+    </answer>
+    <answer fraction="33.333">
+      <text>Une architecture N-tiers correspond à une architecture d'application distribuée sur plusieurs noeuds physiques</text>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+    <answer fraction="33.333">
+      <text>Une application web est une application reposant sur une architecture N Tiers</text>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+  </question>
+  <question />
+  <question type="ShortAnswer">
+    <name>
+      <text>MVC</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Que signifie MVC ?</text>
+    </questionText>
+    <image>moodle_auto_format</image>
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
+    <usecase>0</usecase>
+    <answer fraction="100">
+      <text>Model View Controller</text>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Modèle vue contrôleur</text>
+      <feedback>
+        <text />
+      </feedback>
+    </answer>
+  </question>
+  <question type="ShortAnswer">
+    <name>
+      <text>Premier langage Orienté Objet</text>
+    </name>
+    <questionText format="moodle_auto_format">
+      <text>Quel est le premier langage Orienté Objet ?</text>
+    </questionText>
+    <image>moodle_auto_format</image>
+    <generalfeedback>
+      <text />
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>false</hidden>
+    <shuffleanswer>false</shuffleanswer>
+    <usecase>0</usecase>
+    <answer fraction="100">
+      <text>Simula 66</text>
+      <feedback>
+        <text>Parfait !</text>
+      </feedback>
+    </answer>
+    <answer fraction="75">
+      <text>Simula</text>
+      <feedback>
+        <text>Oui, plus précisément Simula 66</text>
       </feedback>
     </answer>
   </question>

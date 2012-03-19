@@ -1,5 +1,7 @@
 package dcll.projet.quizzer;
 
+import java.util.ArrayList;
+
 /**
  * This class contains definition of Description questions
  * 
@@ -18,6 +20,11 @@ public class Description extends Question {
 	private String image;
 	private String image_64;
 	private String generalfeedback;
+
+
+	private ArrayList<Answer> answers = new ArrayList<Answer>();
+	private ArrayList<Unit> units = new ArrayList<Unit>();
+
 
 	/**
 	 * Constructor :
@@ -100,6 +107,14 @@ public class Description extends Question {
 
 	public String getImage_64() {
 		return image_64;
+	}
+
+	public ArrayList<Answer> getAnswers() {
+		return answers;
+	}
+
+	public ArrayList<Unit> getUnits() {
+		return units;
 	}
 
 }

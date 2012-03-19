@@ -18,8 +18,8 @@ public class Calculated extends Question {
 	private String generalfeedback;
 	private int defaultGrade;
 	private double penalty;
-	private boolean hidden;
-	private boolean shuffleAnswers;
+	private int hidden;
+	private int shuffleAnswers;
 	private ArrayList<Answer> answers = new ArrayList<Answer>();
 	private ArrayList<Unit> units = new ArrayList<Unit>();
 	private ArrayList<DatasetDefinition> datasetDefinitions = new ArrayList<DatasetDefinition>();
@@ -43,7 +43,7 @@ public class Calculated extends Question {
 	public Calculated(String mName, String mQuestionText, String mFormat,
 			String mImage, String mImage_64, int mDefaultGrade,
 			String mGeneralfeedback,
-			double mPenalty, boolean mHidden, boolean mShuffleAnswers,
+			double mPenalty, int mHidden, int mShuffleAnswers,
 			ArrayList<Answer> mAnswers, ArrayList<Unit> mUnits,
 			ArrayList<DatasetDefinition> mDatasetDefinitions) {
 		super(mName);
@@ -109,11 +109,11 @@ public class Calculated extends Question {
 		return penalty;
 	}
 
-	public boolean isHidden() {
+	public int isHidden() {
 		return hidden;
 	}
 
-	public boolean isShuffleAnswers() {
+	public int isShuffleAnswers() {
 		return shuffleAnswers;
 	}
 
