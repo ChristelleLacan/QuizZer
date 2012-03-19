@@ -557,6 +557,36 @@ public class XmlToJava implements IxmlToJava {
 	 * @param quiz
 	 */
 	private void xmlTrueFalseToJava(Element e, Questionnaire quiz) {
+		String name = e.getChild("name").getChildTextTrim("text");
+		String questionText = e.getChild("questiontext").getChildTextTrim(
+				"text");
+		String format = e.getChild("questiontext").getAttributeValue("format")
+				.trim();
+		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
+		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
+		int shuffleanswers = Integer.parseInt(e
+				.getChildTextTrim("shuffleanswers"));
+		int hidden = Integer.parseInt(e.getChildTextTrim("hidden"));
+		String image = e.getChildTextTrim("image");
+		String image_64 = null;
+		if (image != null) {
+			image_64 = e.getChildTextTrim("image_64");
+		}
+		String generalFeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
+		ArrayList<Answer> answers = new ArrayList<Answer>();
+
+		List<?> answersRes = e.getChildren("answer");
+		Iterator<?> i = answersRes.iterator();
+
+		// parcours toutes les réponses
+		while (i.hasNext()) {
+			Element courant = (Element) i.next();
+			answers.add(xmlAnswerToJava(courant));
+		}
+		
+		TrueFalse myQuestion = new TrueFalse(name, questionText, defaultgrade, penalty, shuffleanswers, hidden, generalFeedback, answers, format, image, image_64);
+		quiz.getQuestions().add(myQuestion);
 
 	}
 
