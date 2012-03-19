@@ -9,7 +9,7 @@ package dcll.projet.quizzer;
 //
 import java.util.List;
 
-public class Question {
+public abstract class  Question {
 	private String name;
 	private String questionText;
 	private int defaultgrade;
