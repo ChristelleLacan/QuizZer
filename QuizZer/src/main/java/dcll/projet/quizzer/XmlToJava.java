@@ -1,6 +1,5 @@
 package dcll.projet.quizzer;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,35 +14,33 @@ import org.jdom.input.SAXBuilder;
  * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
  * 
  */
-public class XmlToJava {
-
-	private org.jdom.Document document;
-	private static Element racine;
+public class XmlToJava implements IxmlToJava{
 
 	/**
-	 * This method is used to load xml document. This method initialize the
-	 * racine Element with the root of the xml document
+	 * This method is used to load xml document and launch the parsing of the
+	 * xml document
+	 * 
+	 * @param myFile
+	 *            : The xml Document
+	 * @return quiz : The java object questionary
 	 */
-	public void loadDocument() {
-		// On crée une instance de SAXBuilder
+	public Questionnaire run(String myFile) {
+		org.jdom.Document document = null;
+		Element racine;
+		// creation of SAXBuilder instance :
 		SAXBuilder sxb = new SAXBuilder();
 		try {
-			// On crée un nouveau document JDOM avec en argument le fichier XML
-			document = sxb.build(this.getClass().getResourceAsStream(
-					"../xmldoc/quiz.xml"));
-			// Le parsing est terminé ;)
+			// creation of JDOM document with xmlDoc as input
+			document = sxb.build(this.getClass().getResourceAsStream(myFile));
+			// Le parsing is over
 		} catch (Exception e) {
+			System.out
+					.println("Can't find the spcified emplacement for the XML Document");
 		}
 
-		// On initialise un nouvel élément racine avec l'élément racine du
-		// document.
+		// Initialisation of racine with the root of the XML doc
 		racine = document.getRootElement();
-	}
 
-	/**
-	 * The run method is here to launch the parsing of the xml document
-	 */
-	public void run() {
 		List<?> questionsXML = racine.getChildren("question");
 
 		ArrayList<Question> questions = new ArrayList<Question>();
@@ -57,7 +54,6 @@ public class XmlToJava {
 			// selectionner un noeud fils, modifier du texte, etc...
 			Element courant = (Element) i.next();
 			String type = courant.getAttributeValue("type").trim();
-			// System.out.println(type);
 			if (type.equals("numerical")) {
 				xmlNumericalToJava(courant, quiz);
 			}
@@ -65,7 +61,7 @@ public class XmlToJava {
 				xmlMultipleChoiceToJava(courant, quiz);
 			}
 			if (type.equals("shortanswer")) {
-				// xmlShortAnswerToJava(courant, quiz);
+				xmlShortAnswerToJava(courant, quiz);
 			}
 			if (type.equals("essay")) {
 				xmlEssayToJava(courant, quiz);
@@ -85,9 +81,12 @@ public class XmlToJava {
 			if (type.equals("calculated")) {
 				xmlCalcultatedToJava(courant, quiz);
 			}
+			if (type.equals("truefalse")) {
+				xmlTrueFalseToJava(courant, quiz);
+			}
 		}
-		System.out.println(quiz.toString());
 
+		return quiz;
 	}
 
 	/**
@@ -296,11 +295,14 @@ public class XmlToJava {
 		String incorrectFeedback = e.getChild("incorrectfeedback")
 				.getChildTextTrim("text");
 		String answerNumbering = e.getChildTextTrim("answernumbering");
+		String generalFeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
 
 		MultipleChoice myQuestion = new MultipleChoice(name, questionText,
 				defaultgrade, penalty, shuffleanswers, hidden, answers, format,
-				image, image_64, correctFeedback, partiallyCorrectFeedback,
-				incorrectFeedback, answerNumbering, single);
+				image, image_64, generalFeedback, correctFeedback,
+				partiallyCorrectFeedback, incorrectFeedback, answerNumbering,
+				single);
 		quiz.getQuestions().add(myQuestion);
 	}
 
@@ -318,7 +320,6 @@ public class XmlToJava {
 		String format = e.getChild("questiontext").getAttributeValue("format")
 				.trim();
 		int defaultgrade = Integer.parseInt(e.getChildTextTrim("defaultgrade"));
-		NumberFormat myFormat = NumberFormat.getInstance();
 		double penalty = Double.parseDouble(e.getChildTextTrim("penalty"));
 		boolean shuffleanswers = Boolean.valueOf(
 				e.getChildTextTrim("shuffleanswers")).booleanValue();
@@ -333,11 +334,14 @@ public class XmlToJava {
 			Element courant = (Element) i.next();
 			answers.add(xmlAnswerToJava(courant));
 		}
-
-		// // CREATION DE L'OBJET SHORT ANSWER
-		// ShortAnswer myQuestion = new ShortAnswer(name, questionText,
-		// defaultgrade, penalty, shuffleanswers, hidden, answers, format);
-		// quiz.getQuestions().add(myQuestion);
+		int usecase = Integer.parseInt(e.getChildTextTrim("usecase"));
+		String generalFeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
+		// CREATION DE L'OBJET SHORT ANSWER
+		ShortAnswer myQuestion = new ShortAnswer(name, questionText, format,
+				format, generalFeedback, defaultgrade, penalty, hidden,
+				shuffleanswers, usecase, answers);
+		quiz.getQuestions().add(myQuestion);
 	}
 
 	/**
@@ -373,9 +377,12 @@ public class XmlToJava {
 		if (image != null) {
 			image_64 = e.getChildTextTrim("image_64");
 		}
+		String generalFeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
 
 		Essay myQuestion = new Essay(name, questionText, defaultgrade, penalty,
-				shuffleanswers, hidden, answers, format, image, image_64);
+				shuffleanswers, hidden, generalFeedback, answers, format,
+				image, image_64);
 		quiz.getQuestions().add(myQuestion);
 	}
 
@@ -415,10 +422,12 @@ public class XmlToJava {
 			answerName = courant.getChild("answer").getChildTextTrim("text");
 			subQuestions.add(new SubQuestion(subQuestionName, answerName));
 		}
+		String generalFeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
 
 		Matching myQuestion = new Matching(name, questionText, defaultgrade,
-				penalty, shuffleanswers, hidden, format, image, image_64,
-				subQuestions);
+				penalty, shuffleanswers, hidden, format, generalFeedback,
+				image, image_64, subQuestions);
 		quiz.getQuestions().add(myQuestion);
 	}
 
@@ -435,8 +444,11 @@ public class XmlToJava {
 				"text");
 		boolean shuffleanswers = Boolean.valueOf(
 				e.getChildTextTrim("shuffleanswers")).booleanValue();
+		String generalFeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
 
-		Cloze myQuestion = new Cloze(name, questionText, shuffleanswers);
+		Cloze myQuestion = new Cloze(name, questionText, shuffleanswers,
+				generalFeedback);
 		quiz.getQuestions().add(myQuestion);
 	}
 
@@ -533,11 +545,24 @@ public class XmlToJava {
 			Element courant = (Element) k.next();
 			datasetDefinitions.add(xmlDatasetDefinitionToJava(courant));
 		}
+		String generalFeedback = e.getChild("generalfeedback")
+				.getChildTextTrim("text");
 
 		Calculated myQuestion = new Calculated(name, questionText, format,
-				image, image_64, defaultgrade, penalty, hidden, shuffleanswers,
-				answers, units, datasetDefinitions);
+				image, image_64, defaultgrade, generalFeedback, penalty,
+				hidden, shuffleanswers, answers, units, datasetDefinitions);
 		quiz.getQuestions().add(myQuestion);
+	}
+
+	/**
+	 * This method parse an element <question> of type Calculated and add it to
+	 * the Quiz Java Object
+	 * 
+	 * @param e
+	 * @param quiz
+	 */
+	private void xmlTrueFalseToJava(Element e, Questionnaire quiz) {
+
 	}
 
 }
