@@ -20,6 +20,7 @@ import dcll.projet.quizzer.typesQuestions.Numerical;
 import dcll.projet.quizzer.typesQuestions.ShortAnswer;
 import dcll.projet.quizzer.typesQuestions.TrueFalse;
 import dcll.projet.quizzer.typesQuestions.element.Answer;
+import dcll.projet.quizzer.typesQuestions.element.SubQuestion;
 
 public class JavaToXml {
 

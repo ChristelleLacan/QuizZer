@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dcll.projet.quizzer.Question;
-import dcll.projet.quizzer.SubQuestion;
+import dcll.projet.quizzer.typesQuestions.element.SubQuestion;
 
 /**
  * This class contains definition of Matching questions
