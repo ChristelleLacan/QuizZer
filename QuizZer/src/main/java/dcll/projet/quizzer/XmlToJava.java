@@ -60,7 +60,7 @@ public class XmlToJava implements IxmlToJava {
 		List<?> questionsXML = racine.getChildren("question");
 
 		ArrayList<Question> questions = new ArrayList<Question>();
-		Questionnaire quiz = new Questionnaire("MyQuiz", questions);
+		Questionnaire quiz = new Questionnaire("MyQuiz", questions, racine.getName());
 
 		// On crée un Iterator sur notre liste
 		Iterator<?> i = questionsXML.iterator();
