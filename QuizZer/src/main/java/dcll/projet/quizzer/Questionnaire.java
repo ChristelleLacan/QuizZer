@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class Questionnaire {
 	private String quizName;
+	private String racine;
 	private ArrayList<Question> questions = new ArrayList<Question>();
 
 	/**
@@ -18,13 +19,19 @@ public class Questionnaire {
 	 * @param quizName
 	 * @param questions
 	 */
-	public Questionnaire(String quizName, ArrayList<Question> questions) {
+	public Questionnaire(String quizName, ArrayList<Question> questions, String racine) {
 		this.quizName = quizName;
 		this.questions = questions;
+		this.racine = racine;
 	}
 
 	public ArrayList<Question> getQuestions() {
 		return questions;
+	}
+
+	
+	public String getRacine() {
+		return racine;
 	}
 
 	/**

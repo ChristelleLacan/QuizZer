@@ -22,75 +22,10 @@ import dcll.projet.quizzer.typesQuestions.TrueFalse;
 import dcll.projet.quizzer.typesQuestions.element.Answer;
 
 public class JavaToXml {
-
-	private static Element racine = new Element("quiz");
-	private static Document document = new Document(racine);
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// elements de test
-		/*ArrayList<Question> questions = new ArrayList<Question>();
-
-		List<Answer> answers = new ArrayList<Answer>();
-		List<DatasetDefinition> datasetDefinition = new ArrayList<DatasetDefinition>();
-		List<Unit> unit = new ArrayList<Unit>();
-		Answer a = new Answer(
-				"Une architecture N-tiers est uniquement une architecture à base de Web Services",
-				"0",
-				"Une architecture distribuée peut reposer par exemple sur RMI",
-				null, null, null, null);
-		Answer a1 = new Answer(
-				"Une architecture client serveur est une architecture N-tiers",
-				"33.333", "", null, null, null, null);
-		answers.add(a);
-		answers.add(a1);
-		Question quest = new Category("$course$/Défaut pour 1SA3GL1");
-		
-		 * Question quest1 = new MultipleChoice("Architectures N tiers",
-		 * "moodle_auto_format",
-		 * "backupdata/446px-Uncle_Sam_pointing_finger_.jpg", null); Question
-		 * description = new Description( "Consigne dispositif électronique",
-		 * "Pas de calculatrice !", 0, 0, false, false, false);
-		 * questions.add(description);
-		 *
-
-		Question quest2 = new MultipleChoice("Architectures N tiers",
-				"Cocher les assertions vraies.", 1, 0.1, false, false, answers,
-				"moodle_auto_format",
-				"backupdata/446px-Uncle_Sam_pointing_finger_.jpg", null, "",
-				"OK", "", "KO", "abc", false);
-
-		questions.add(quest);
-		questions.add(quest2);
-		*/
-		/*
-		 * Calculated calculated=new Calculated("Aire du cercle",
-		 * "Calcul de l'aire du cercle ayant pour rayon {R}",
-		 * "moodle_auto_format",
-		 * "backupdata/446px-Uncle_Sam_pointing_finger_.jpg", null, 1,null,1,
-		 * false, false, answers,unit, datasetDefinition);
-		 * questions.add(calculated);
-		 * 
-		 * TrueFalse truefalse = new TrueFalse( "Tomcat et JEE",
-		 * "Tomcat est un conteneur implémentant toutes les spécifications JEE",
-		 * 1, 0.1, false, false, null, answers, "moodle_auto_format",
-		 * "backupdata/446px-Uncle_Sam_pointing_finger_.jpg", null);
-		 * questions.add(truefalse);
-		 * 
-		 * 
-		 * Questionnaire quiz = new Questionnaire("quiz", questions);
-		 */
-		String myFile = "../xmldoc/quiz.xml";
-		IxmlToJava myXmlToJavaParser = new XmlToJava();
-		Questionnaire myQuiz = myXmlToJavaParser.run(myFile);
-
-		run(myQuiz);
-	}
-
-	public static void run(Questionnaire quiz) {
-
+	
+	public static void run(Questionnaire quiz, String fichier) {
+		Element racine = new Element(quiz.getRacine());
+		Document document = new Document(racine);
 		for (int i = 0; i < quiz.getQuestions().size(); i++) {
 			Element question = new Element("question");
 			racine.addContent(question);
@@ -118,8 +53,8 @@ public class JavaToXml {
 			}
 		}
 
-		affiche();
-		enregistre();
+		affiche(document);
+		enregistre(fichier, document);
 	}
 
 	private static void convertDescription(Description q, Element question) {
@@ -820,24 +755,24 @@ public class JavaToXml {
 		}
 	}
 
-	private static void enregistre() {
+	private static void enregistre(String fichier, Document document) {
 		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
-		String fichier = "src/main/java/dcll/projet/xmldoc/JavaToXml.xml";
 		try {
 			FileOutputStream fic = new FileOutputStream(fichier);
 			sortie.output(document, fic);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			System.err.println("Probleme au niveau de l'enregistrement");
 			e.printStackTrace();
 		}
 	}
 
-	private static void affiche() {
+	private static void affiche(Document document) {
 		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 		try {
 			sortie.output(document, System.out);
 		} catch (IOException e) {
-			System.out.println("Probleme au niveau de l'affichage");
+			System.err.println("Probleme au niveau de l'affichage");
+			e.printStackTrace();
 		}
 	}
 
