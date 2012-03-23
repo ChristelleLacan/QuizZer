@@ -7,7 +7,7 @@ import dcll.projet.quizzer.typesQuestions.element.Answer;
 
 /**
  * 
- * @author etu2
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
  * 
  */
 public class ShortAnswer extends Question {
@@ -24,6 +24,21 @@ public class ShortAnswer extends Question {
 	private List<Answer> answers;
 	private String type;
 
+	/**
+	 * Constructor :
+	 * 
+	 * @param mName
+	 * @param mQuestionText
+	 * @param mDefaultgrade
+	 * @param mPenalty
+	 * @param mShuffleanswers
+	 * @param mHidden
+	 * @param mAnswers
+	 * @param mFormat
+	 * @param mImage
+	 * @param mGeneralFeedback
+	 */
+	
 	public ShortAnswer(String mName, String mQuestionText, String mFormat,
 			String mImage, String mGeneralFeedback, int mDefaultgrade,
 			double mPenalty, int mHidden, int mShuffleanswers,
@@ -39,6 +54,10 @@ public class ShortAnswer extends Question {
 		answers = mAnswers;
 		type = "ShortAnswer";
 	}
+	
+	/**
+	 * toString
+	 */
 
 	public String toString() {
 		return "\n----Ceci est une shortAnswer : \n" + super.toString()
