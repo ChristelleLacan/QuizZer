@@ -3,7 +3,7 @@ package dcll.projet.quizzer.typesQuestions;
 import dcll.projet.quizzer.Question;
 
 /**
- * This class contains the definition of Cloze Questions
+ * This class contains definition of Cloze Questions
  * 
  * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
  * 
