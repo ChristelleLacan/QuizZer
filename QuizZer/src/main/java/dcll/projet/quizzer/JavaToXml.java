@@ -20,24 +20,27 @@ import dcll.projet.quizzer.typesQuestions.Numerical;
 import dcll.projet.quizzer.typesQuestions.ShortAnswer;
 import dcll.projet.quizzer.typesQuestions.TrueFalse;
 import dcll.projet.quizzer.typesQuestions.element.Answer;
+import dcll.projet.quizzer.typesQuestions.element.DatasetDefinition;
+import dcll.projet.quizzer.typesQuestions.element.DatasetItem;
 import dcll.projet.quizzer.typesQuestions.element.SubQuestion;
-/**
+
+/**.
  * This class contains the definition of the xmlToJava Parser used to parse xml
  * document into java objects
- * 
  * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
- *
  */
 public class JavaToXml implements IjavaToXml {
 
-	/**
-	 * This method is used to parse the java object to xml document 
-	 * 
-	 * @param quiz : the xml questionnaire
-	 * @param fichier : The xml Document
-	 * @return quiz : The java object questionnaire
+	/**.
+	 * This method is used to parse the java object to xml document
+	 * @param quiz
+	 *            : the xml questionnaire
+	 * @param fichier
+	 *            : The xml Document
+	 * @return quiz
+	 * 			  : The java object questionnaire
 	 */
-	public void run(Questionnaire quiz, String fichier) {
+	public final void run(Questionnaire quiz, String fichier) {
 		Element racine = new Element(quiz.getRacine());
 		Document document = new Document(racine);
 		for (int i = 0; i < quiz.getQuestions().size(); i++) {
@@ -47,7 +50,8 @@ public class JavaToXml implements IjavaToXml {
 			if (q instanceof Cloze) {
 				convertCloze((Cloze) q, question);
 			} else if (q instanceof MultipleChoice) {
-				convertMultipleChoice((MultipleChoice) q, question);
+				convertMultipleChoice((MultipleChoice) q,
+						question);
 			} else if (q instanceof ShortAnswer) {
 				convertShortAnswer((ShortAnswer) q, question);
 			} else if (q instanceof Category) {
@@ -71,14 +75,16 @@ public class JavaToXml implements IjavaToXml {
 		enregistre(fichier, document);
 	}
 
-	/**
-	 * this method used to parse an element description
-	 * and add to the XML document 
-	 * 
-	 * @param q object java, have to convert in XML 
-	 * @param question element parent
+	/**.
+	 * this method used to parse an element description and add to the XML
+	 * document
+	 * @param q
+	 *            object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
-	private static void convertDescription(Description q, Element question) {
+	private static void convertDescription(Description q,
+			Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
 
@@ -124,12 +130,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
-	/**
-	 * this method used to parse an element Calculated
-	 * and add to the XML document 
-	 * 
-	 * @param q calculated object java, have to convert in XML 
-	 * @param question element parent
+	/**.
+	 * this method used to parse an element Calculated and add to the XML
+	 * document
+	 * @param q
+	 *            calculated object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
 	private static void convertCalculated(Calculated q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
@@ -182,7 +189,8 @@ public class JavaToXml implements IjavaToXml {
 			current = q.getAnswers().get(i);
 			answer = new Element("answer");
 			question.addContent(answer);
-			fraction = new Attribute("fraction", current.getFraction());
+			fraction = new Attribute("fraction",
+					current.getFraction());
 			answer.setAttribute(fraction);
 
 			text = new Element("text");
@@ -197,11 +205,13 @@ public class JavaToXml implements IjavaToXml {
 			answer.addContent(tolerancetype);
 			tolerancetype.addContent(current.getToleranceType());
 
-			Element correctanswerformat = new Element("correctanswerformat");
+			Element correctanswerformat =
+					new Element("correctanswerformat");
 			answer.addContent(correctanswerformat);
 			correctanswerformat.addContent(current.getCorrectAnswerFormat());
 
-			Element correctanswerlength = new Element("correctanswerlength");
+			Element correctanswerlength =
+					new Element("correctanswerlength");
 			answer.addContent(correctanswerlength);
 			correctanswerlength.addContent(current.getCorrectAnswerLength());
 
@@ -220,100 +230,106 @@ public class JavaToXml implements IjavaToXml {
 			units.addContent(unit);
 
 			Element multiplier = new Element("multiplier");
-			Element unit_name = new Element("unit_name");
+			Element unitName = new Element("unit_name");
 			unit.addContent(multiplier);
-			unit.addContent(unit_name);
+			unit.addContent(unitName);
 			multiplier.addContent(q.getUnits().get(i).getMultiplier());
-			unit_name.addContent(q.getUnits().get(i).getUnitName());
+			unitName.addContent(q.getUnits().get(i).getUnitName());
 		}
 
 		Element dataset_definitions = new Element("dataset_definitions");
 		question.addContent(dataset_definitions);
 
-		Element status, dataset_definition, typ, distribution, minimum, maximum;
-		Element decimals, itemcount, dataset_items, dataset_item, number, value;
+		Element status, datasetDefinition;
+		Element typ, distribution, minimum, maximum;
+		Element decimals, itemcount, datasetItems;
+		Element datasetItem, number, value;
 		for (int i = 0; i < q.getDatasetDefinitions().size(); i++) {
-			dataset_definition = new Element("dataset_definition");
-			dataset_definitions.addContent(dataset_definition);
+			DatasetDefinition datasetDef =
+					q.getDatasetDefinitions().get(i);
+			datasetDefinition = new Element("dataset_definition");
+			dataset_definitions.addContent(datasetDefinition);
 
 			status = new Element("status");
-			dataset_definition.addContent(status);
+			datasetDefinition.addContent(status);
 			text = new Element("text");
 			status.addContent(text);
-			text.addContent(q.getDatasetDefinitions().get(i).getStatus());
+			text.addContent(datasetDef.getStatus());
 
 			name = new Element("name");
-			dataset_definition.addContent(name);
+			datasetDefinition.addContent(name);
 			text = new Element("text");
 			name.addContent(text);
-			text.addContent(q.getDatasetDefinitions().get(i).getName());
+			text.addContent(datasetDef.getName());
 
 			typ = new Element("type");
-			dataset_definition.addContent(typ);
-			typ.addContent(q.getDatasetDefinitions().get(i).getType());
+			datasetDefinition.addContent(typ);
+			typ.addContent(datasetDef.getType());
 
 			distribution = new Element("distribution");
-			dataset_definition.addContent(distribution);
+			datasetDefinition.addContent(distribution);
 			text = new Element("text");
 			distribution.addContent(text);
-			text.addContent(q.getDatasetDefinitions().get(i).getDistribution());
+			text.addContent(datasetDef.getDistribution());
 
 			minimum = new Element("minimum");
-			dataset_definition.addContent(minimum);
+			datasetDefinition.addContent(minimum);
 			text = new Element("text");
 			minimum.addContent(text);
-			text.addContent(q.getDatasetDefinitions().get(i).getMinimum());
+			text.addContent(datasetDef.getMinimum());
 
 			maximum = new Element("maximum");
-			dataset_definition.addContent(maximum);
+			datasetDefinition.addContent(maximum);
 			text = new Element("text");
 			maximum.addContent(text);
-			text.addContent(q.getDatasetDefinitions().get(i).getMaximum());
+			text.addContent(q.getDatasetDefinitions().
+					get(i).getMaximum());
 
 			decimals = new Element("decimals");
-			dataset_definition.addContent(decimals);
+			datasetDefinition.addContent(decimals);
 			text = new Element("text");
 			decimals.addContent(text);
-			text.addContent(q.getDatasetDefinitions().get(i).getDecimals());
+			text.addContent(q.getDatasetDefinitions().
+					get(i).getDecimals());
 
 			itemcount = new Element("itemcount");
-			dataset_definition.addContent(itemcount);
+			datasetDefinition.addContent(itemcount);
 			itemcount.addContent(q.getDatasetDefinitions().get(i)
 					.getItemCount());
 
-			dataset_items = new Element("dataset_items");
-			dataset_definition.addContent(dataset_items);
+			datasetItems = new Element("dataset_items");
+			datasetDefinition.addContent(datasetItems);
 
 			for (int j = 0; j < q.getDatasetDefinitions().get(i)
 					.getDatasetItems().size(); j++) {
-				dataset_item = new Element("dataset_item");
-				dataset_items.addContent(dataset_item);
+				DatasetItem dataItem = datasetDef.getDatasetItems().get(j);
+				datasetItem = new Element("dataset_item");
+				datasetItems.addContent(datasetItem);
 
 				number = new Element("number");
-				dataset_item.addContent(number);
-				number.addContent(q.getDatasetDefinitions().get(i)
-						.getDatasetItems().get(j).getNumber());
+				datasetItem.addContent(number);
+				number.addContent(dataItem.getNumber());
 
 				value = new Element("value");
-				dataset_item.addContent(value);
-				value.addContent(q.getDatasetDefinitions().get(i)
-						.getDatasetItems().get(j).getValue());
+				datasetItem.addContent(value);
+				value.addContent(dataItem.getValue());
 
 			}
 
-			Element number_of_items = new Element("number_of_items");
-			dataset_definition.addContent(number_of_items);
-			number_of_items.addContent(q.getDatasetDefinitions().get(i)
-					.getNumberOfItems());
+			Element numberOfItems =
+					new Element("number_of_items");
+			datasetDefinition.addContent(numberOfItems);
+			numberOfItems.addContent(datasetDef.getNumberOfItems());
 		}
 	}
 
-	/**
+	/**.
 	 * this method used to parse an element Cloze
-	 * and add to the XML document 
-	 * 
-	 * @param q Cloze object java, have to convert in XML 
-	 * @param question element parent
+	 * and add to the XML document
+	 * @param q
+	 *            Cloze object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
 	private static void convertCloze(Cloze q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
@@ -343,12 +359,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
-	/**
+	/**.
 	 * this method used to parse an element category
-	 * and add to the XML document 
-	 * 
-	 * @param q category object java, have to convert in XML 
-	 * @param question element parent
+	 * and add to the XML document
+	 * @param q
+	 *            category object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
 	private static void convertCategory(Category q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
@@ -361,12 +378,13 @@ public class JavaToXml implements IjavaToXml {
 		text.addContent(q.getCategory());
 	}
 
-	/**
-	 * this method used to parse an element TrueFalse
-	 * and add to the XML document 
-	 * 
-	 * @param q TrueFalse object java, have to convert in XML 
-	 * @param question element parent
+	/**.
+	 * this method used to parse an element TrueFalse and add to the XML
+	 * document
+	 * @param q
+	 *            TrueFalse object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
 	private static void convertTrueFalse(TrueFalse q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
@@ -419,7 +437,8 @@ public class JavaToXml implements IjavaToXml {
 			current = q.getAnswers().get(i);
 			answer = new Element("answer");
 			question.addContent(answer);
-			fraction = new Attribute("fraction", current.getFraction());
+			fraction = new Attribute("fraction",
+					current.getFraction());
 			answer.setAttribute(fraction);
 
 			text = new Element("text");
@@ -435,12 +454,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
-	/**
+	/**.
 	 * this method used to parse an element Essay
-	 * and add to the XML document 
-	 * 
-	 * @param q Essay object java, have to convert in XML 
-	 * @param question element parent
+	 * and add to the XML document
+	 * @param q
+	 *            Essay object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
 	private static void convertEssay(Essay q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
@@ -493,7 +513,8 @@ public class JavaToXml implements IjavaToXml {
 			current = q.getAnswers().get(i);
 			answer = new Element("answer");
 			question.addContent(answer);
-			fraction = new Attribute("fraction", current.getFraction());
+			fraction = new Attribute("fraction",
+					current.getFraction());
 			answer.setAttribute(fraction);
 
 			text = new Element("text");
@@ -509,12 +530,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
-	/**
+	/**.
 	 * this method used to parse an element Matching
-	 * and add to the XML document 
-	 * 
-	 * @param q matching object java, have to convert in XML 
-	 * @param question element parent
+	 * and add to the XML document
+	 * @param q
+	 *            matching object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
 	private static void convertMatching(Matching q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
@@ -581,12 +603,13 @@ public class JavaToXml implements IjavaToXml {
 		}
 	}
 
-	/**
-	 * this method used to parse an element Numerical
-	 * and add to the XML document 
-	 * 
-	 * @param q numerical object java, have to convert in XML 
-	 * @param question element parent
+	/**.
+	 * this method used to parse an element Numerical and add to the XML
+	 * document
+	 * @param q
+	 *            numerical object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
 	private static void convertNumerical(Numerical q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
@@ -639,7 +662,8 @@ public class JavaToXml implements IjavaToXml {
 			current = q.getAnswers().get(i);
 			answer = new Element("answer");
 			question.addContent(answer);
-			fraction = new Attribute("fraction", current.getFraction());
+			fraction = new Attribute("fraction",
+					current.getFraction());
 			answer.setAttribute(fraction);
 
 			text = new Element("text");
@@ -659,14 +683,19 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
-	/**
-	 * this method used to parse an element Multiple Choice
-	 * and add to the XML document 
-	 * 
-	 * @param q MultipleChoice calculated object java, have to convert in XML 
-	 * @param question element parent
+	/**.
+	 * this method used to parse
+	 * an element Multiple Choice and add to the XML
+	 * document
+	 *
+	 * @param q
+	 *          MultipleChoice calculated object java,
+	 *          have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
-	private static void convertMultipleChoice(MultipleChoice q, Element question) {
+	private static void convertMultipleChoice(MultipleChoice q,
+			Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
 
@@ -747,7 +776,8 @@ public class JavaToXml implements IjavaToXml {
 			current = q.getAnswers().get(i);
 			answer = new Element("answer");
 			question.addContent(answer);
-			fraction = new Attribute("fraction", current.getFraction());
+			fraction = new Attribute("fraction",
+					current.getFraction());
 			answer.setAttribute(fraction);
 
 			text = new Element("text");
@@ -763,14 +793,17 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
-	/**
+	/**.
 	 * this method used to parse an element Short Answer
-	 * and add to the XML document 
-	 * 
-	 * @param q ShortAnswer object java, have to convert in XML 
-	 * @param question element parent
+	 * and add to the XML document
+	 *
+	 * @param q
+	 *            ShortAnswer object java, have to convert in XML
+	 * @param question
+	 *            element parent
 	 */
-	private static void convertShortAnswer(ShortAnswer q, Element question) {
+	private static void convertShortAnswer(ShortAnswer q,
+			Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
 
@@ -825,7 +858,8 @@ public class JavaToXml implements IjavaToXml {
 			current = q.getAnswers().get(i);
 			answer = new Element("answer");
 			question.addContent(answer);
-			fraction = new Attribute("fraction", current.getFraction());
+			fraction = new Attribute("fraction",
+					current.getFraction());
 			answer.setAttribute(fraction);
 
 			text = new Element("text");
@@ -840,28 +874,36 @@ public class JavaToXml implements IjavaToXml {
 		}
 	}
 
-	/**
-	 * Record the document XML in a file 
-	 * @param fichier name of the file
-	 * @param document, the document XML
+	/**.
+	 * Record the document XML in a file
+	 *
+	 * @param fichier
+	 *            name of the file
+	 * @param document
+	 *            , the document XML
 	 */
 	private static void enregistre(String fichier, Document document) {
-		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+		XMLOutputter sortie =
+				new XMLOutputter(Format.getPrettyFormat());
 		try {
 			FileOutputStream fic = new FileOutputStream(fichier);
 			sortie.output(document, fic);
 		} catch (Exception e) {
-			System.err.println("Probleme au niveau de l'enregistrement");
+			System.err.println("Probleme au niveau"
+					+ " de l'enregistrement");
 			e.printStackTrace();
 		}
 	}
 
-	/**
+	/**.
 	 * Show the document XML
-	 * @param document, the document XML
+	 *
+	 * @param document
+	 *            , the document XML
 	 */
 	private static void affiche(Document document) {
-		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+		XMLOutputter sortie =
+				new XMLOutputter(Format.getPrettyFormat());
 		try {
 			sortie.output(document, System.out);
 		} catch (IOException e) {
