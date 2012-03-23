@@ -22,9 +22,9 @@ import dcll.projet.quizzer.typesQuestions.TrueFalse;
 import dcll.projet.quizzer.typesQuestions.element.Answer;
 import dcll.projet.quizzer.typesQuestions.element.SubQuestion;
 
-public class JavaToXml {
-	
-	public static void run(Questionnaire quiz, String fichier) {
+public class JavaToXml implements IjavaToXml {
+
+	public void run(Questionnaire quiz, String fichier) {
 		Element racine = new Element(quiz.getRacine());
 		Document document = new Document(racine);
 		for (int i = 0; i < quiz.getQuestions().size(); i++) {
@@ -165,29 +165,29 @@ public class JavaToXml {
 			Element tolerance = new Element("tolerance");
 			answer.addContent(tolerance);
 			tolerance.addContent(current.getTolerance());
-			
-			Element tolerancetype = new Element ("tolerancetype");
+
+			Element tolerancetype = new Element("tolerancetype");
 			answer.addContent(tolerancetype);
 			tolerancetype.addContent(current.getToleranceType());
-			
-			Element correctanswerformat = new Element ("correctanswerformat");
+
+			Element correctanswerformat = new Element("correctanswerformat");
 			answer.addContent(correctanswerformat);
 			correctanswerformat.addContent(current.getCorrectAnswerFormat());
 
-			Element correctanswerlength = new Element ("correctanswerlength");
+			Element correctanswerlength = new Element("correctanswerlength");
 			answer.addContent(correctanswerlength);
 			correctanswerlength.addContent(current.getCorrectAnswerLength());
-			
+
 			feedback = new Element("feedback");
 			answer.addContent(feedback);
 			text = new Element("text");
 			feedback.addContent(text);
 			text.addContent(current.getFeedback());
 		}
-		
+
 		Element units = new Element("units");
 		question.addContent(units);
-		
+
 		for (int i = 0; i < q.getUnits().size(); i++) {
 			Element unit = new Element("unit");
 			units.addContent(unit);
@@ -257,7 +257,8 @@ public class JavaToXml {
 			dataset_items = new Element("dataset_items");
 			dataset_definition.addContent(dataset_items);
 
-			for (int j = 0; j < q.getDatasetDefinitions().get(i).getDatasetItems().size(); j++) {
+			for (int j = 0; j < q.getDatasetDefinitions().get(i)
+					.getDatasetItems().size(); j++) {
 				dataset_item = new Element("dataset_item");
 				dataset_items.addContent(dataset_item);
 
@@ -272,10 +273,11 @@ public class JavaToXml {
 						.getDatasetItems().get(j).getValue());
 
 			}
-			
+
 			Element number_of_items = new Element("number_of_items");
 			dataset_definition.addContent(number_of_items);
-			number_of_items.addContent(q.getDatasetDefinitions().get(i).getNumberOfItems());
+			number_of_items.addContent(q.getDatasetDefinitions().get(i)
+					.getNumberOfItems());
 		}
 	}
 
@@ -310,7 +312,7 @@ public class JavaToXml {
 	private static void convertCategory(Category q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
-		
+
 		Element category = new Element("category");
 		question.addContent(category);
 		Element text = new Element("text");
@@ -517,8 +519,7 @@ public class JavaToXml {
 		}
 	}
 
-	private static void convertNumerical(Numerical q,
-			Element question) {
+	private static void convertNumerical(Numerical q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
 
@@ -631,10 +632,10 @@ public class JavaToXml {
 		Element hidden = new Element("hidden");
 		question.addContent(hidden);
 		hidden.addContent("" + q.getHidden());
-		
+
 		Element single = new Element("single");
 		question.addContent(single);
-		single.addContent(q.isSingle()+"");
+		single.addContent(q.isSingle() + "");
 
 		Element shuffleanswers = new Element("shuffleanswer");
 		question.addContent(shuffleanswers);

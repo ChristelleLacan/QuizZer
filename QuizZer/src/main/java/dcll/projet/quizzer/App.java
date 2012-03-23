@@ -11,8 +11,9 @@ public class App {
 		Questionnaire myQuiz = myXmlToJavaParser.run(myFile);
 
 		System.out.println(myQuiz);
-		
+
 		String fichier = "src/main/java/dcll/projet/xmldoc/JavaToXml.xml";
-		JavaToXml.run(myQuiz, fichier);
+		IjavaToXml myJavaToXmlParser = new JavaToXml();
+		myJavaToXmlParser.run(myQuiz, fichier);
 	}
 }
