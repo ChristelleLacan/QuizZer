@@ -20,6 +20,7 @@ import dcll.projet.quizzer.typesQuestions.TrueFalse;
 import dcll.projet.quizzer.typesQuestions.element.Answer;
 import dcll.projet.quizzer.typesQuestions.element.DatasetDefinition;
 import dcll.projet.quizzer.typesQuestions.element.DatasetItem;
+import dcll.projet.quizzer.typesQuestions.element.SubQuestion;
 import dcll.projet.quizzer.typesQuestions.element.Unit;
 
 /**
