@@ -21,9 +21,22 @@ import dcll.projet.quizzer.typesQuestions.ShortAnswer;
 import dcll.projet.quizzer.typesQuestions.TrueFalse;
 import dcll.projet.quizzer.typesQuestions.element.Answer;
 import dcll.projet.quizzer.typesQuestions.element.SubQuestion;
-
+/**
+ * This class contains the definition of the xmlToJava Parser used to parse xml
+ * document into java objects
+ * 
+ * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
+ *
+ */
 public class JavaToXml implements IjavaToXml {
 
+	/**
+	 * This method is used to parse the java object to xml document 
+	 * 
+	 * @param quiz : the xml questionnaire
+	 * @param fichier : The xml Document
+	 * @return quiz : The java object questionnaire
+	 */
 	public void run(Questionnaire quiz, String fichier) {
 		Element racine = new Element(quiz.getRacine());
 		Document document = new Document(racine);
@@ -58,6 +71,13 @@ public class JavaToXml implements IjavaToXml {
 		enregistre(fichier, document);
 	}
 
+	/**
+	 * this method used to parse an element description
+	 * and add to the XML document 
+	 * 
+	 * @param q object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertDescription(Description q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -104,6 +124,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
+	/**
+	 * this method used to parse an element Calculated
+	 * and add to the XML document 
+	 * 
+	 * @param q calculated object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertCalculated(Calculated q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -281,6 +308,13 @@ public class JavaToXml implements IjavaToXml {
 		}
 	}
 
+	/**
+	 * this method used to parse an element Cloze
+	 * and add to the XML document 
+	 * 
+	 * @param q Cloze object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertCloze(Cloze q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -309,6 +343,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
+	/**
+	 * this method used to parse an element category
+	 * and add to the XML document 
+	 * 
+	 * @param q category object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertCategory(Category q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -320,6 +361,13 @@ public class JavaToXml implements IjavaToXml {
 		text.addContent(q.getCategory());
 	}
 
+	/**
+	 * this method used to parse an element TrueFalse
+	 * and add to the XML document 
+	 * 
+	 * @param q TrueFalse object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertTrueFalse(TrueFalse q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -387,6 +435,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
+	/**
+	 * this method used to parse an element Essay
+	 * and add to the XML document 
+	 * 
+	 * @param q Essay object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertEssay(Essay q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -454,6 +509,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
+	/**
+	 * this method used to parse an element Matching
+	 * and add to the XML document 
+	 * 
+	 * @param q matching object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertMatching(Matching q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -519,6 +581,13 @@ public class JavaToXml implements IjavaToXml {
 		}
 	}
 
+	/**
+	 * this method used to parse an element Numerical
+	 * and add to the XML document 
+	 * 
+	 * @param q numerical object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertNumerical(Numerical q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -590,6 +659,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
+	/**
+	 * this method used to parse an element Multiple Choice
+	 * and add to the XML document 
+	 * 
+	 * @param q MultipleChoice calculated object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertMultipleChoice(MultipleChoice q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -687,6 +763,13 @@ public class JavaToXml implements IjavaToXml {
 
 	}
 
+	/**
+	 * this method used to parse an element Short Answer
+	 * and add to the XML document 
+	 * 
+	 * @param q ShortAnswer object java, have to convert in XML 
+	 * @param question element parent
+	 */
 	private static void convertShortAnswer(ShortAnswer q, Element question) {
 		Attribute type = new Attribute("type", q.getType());
 		question.setAttribute(type);
@@ -757,6 +840,11 @@ public class JavaToXml implements IjavaToXml {
 		}
 	}
 
+	/**
+	 * Record the document XML in a file 
+	 * @param fichier name of the file
+	 * @param document, the document XML
+	 */
 	private static void enregistre(String fichier, Document document) {
 		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 		try {
@@ -768,6 +856,10 @@ public class JavaToXml implements IjavaToXml {
 		}
 	}
 
+	/**
+	 * Show the document XML
+	 * @param document, the document XML
+	 */
 	private static void affiche(Document document) {
 		XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 		try {
