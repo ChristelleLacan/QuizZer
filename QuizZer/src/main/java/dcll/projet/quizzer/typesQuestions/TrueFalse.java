@@ -7,7 +7,7 @@ import dcll.projet.quizzer.Question;
 import dcll.projet.quizzer.typesQuestions.element.Answer;
 
 /**
- * This class contains the definition of True/False questions
+ * This class contains definition of True/False questions
  * 
  * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
  * 
