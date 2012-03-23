@@ -1,4 +1,4 @@
-package dcll.projet.quizzer;
+package dcll.projet.quizzer.typesQuestions;
 
 /**
  * This class contains the definition of subQuestions used in matching questions
