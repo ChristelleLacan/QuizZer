@@ -22,6 +22,9 @@ public class ShortAnswer extends Question {
 	private int shuffleanswers;
 	private int usecase;
 	private List<Answer> answers;
+	/**
+	 * The type
+	 */
 	private String type;
 
 	/**

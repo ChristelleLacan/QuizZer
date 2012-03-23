@@ -22,6 +22,9 @@ public class TrueFalse extends Question {
 	private int shuffleAnswers;
 	private String generalfeedback;
 	private List<Answer> answers = new ArrayList<Answer>();
+	/**
+	 * The type
+	 */
 	private String type;
 	private String image;
 	private String image_64;
@@ -61,7 +64,7 @@ public class TrueFalse extends Question {
 	/**
 	 * toString
 	 */
-	public String toString() {
+	public final String toString() {
 		return "\n----Ceci est : une " + type + "  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade
 				+ "\n" + "penalty : " + penalty + "\n" + "shuffleanswers : "
@@ -71,47 +74,47 @@ public class TrueFalse extends Question {
 				+ answers.toString() + "\n";
 	}
 
-	public String getGeneralfeedback() {
+	public final String getGeneralfeedback() {
 		return generalfeedback;
 	}
 
-	public String getQuestionText() {
+	public final String getQuestionText() {
 		return questionText;
 	}
 
-	public String getFormat() {
+	public final String getFormat() {
 		return format;
 	}
 
-	public int getDefaultGrade() {
+	public final int getDefaultGrade() {
 		return defaultGrade;
 	}
 
-	public double getPenalty() {
+	public final double getPenalty() {
 		return penalty;
 	}
 
-	public int getHidden() {
+	public final int getHidden() {
 		return hidden;
 	}
 
-	public int getShuffleAnswers() {
+	public final int getShuffleAnswers() {
 		return shuffleAnswers;
 	}
 
-	public List<Answer> getAnswers() {
+	public final List<Answer> getAnswers() {
 		return answers;
 	}
 
-	public String getType() {
+	public final String getType() {
 		return type;
 	}
 
-	public String getImage() {
+	public final String getImage() {
 		return image;
 	}
 
-	public String getImage_64() {
+	public final String getImage_64() {
 		return image_64;
 	}
 

@@ -21,6 +21,9 @@ public class Matching extends Question {
 	private int hidden;
 	private int shuffleAnswers;
 	private String generalfeedback;
+	/**
+	 * The type
+	 */
 	private String type;
 	private String image;
 	private String image_64;

@@ -15,6 +15,9 @@ import dcll.projet.quizzer.typesQuestions.element.Unit;
  */
 public class Calculated extends Question {
 
+	/**
+	 * The type
+	 */
 	private String type;
 	private String questionText;
 	private String format;
@@ -47,9 +50,9 @@ public class Calculated extends Question {
 	 */
 	public Calculated(String mName, String mQuestionText, String mFormat,
 			String mImage, String mImage_64, int mDefaultGrade,
-			String mGeneralfeedback,
-			double mPenalty, int mHidden, int mShuffleAnswers,
-			ArrayList<Answer> mAnswers, ArrayList<Unit> mUnits,
+			String mGeneralfeedback, double mPenalty, int mHidden,
+			int mShuffleAnswers, ArrayList<Answer> mAnswers,
+			ArrayList<Unit> mUnits,
 			ArrayList<DatasetDefinition> mDatasetDefinitions) {
 		super(mName);
 		questionText = mQuestionText;
@@ -68,9 +71,9 @@ public class Calculated extends Question {
 	}
 
 	/**
-	 * toString
+	 * @return a string
 	 */
-	public String toString() {
+	public final String toString() {
 		return "\n----Ceci est : une " + type + "  \n" + super.toString()
 				+ "format : " + format + "defaultgrade : " + defaultGrade
 				+ "\n" + "penalty : " + penalty + "\n" + "shuffleanswers : "
@@ -82,55 +85,61 @@ public class Calculated extends Question {
 
 	}
 
-	public String getGeneralfeedback() {
+	/**
+	 * @return general feedback
+	 */
+	public final String getGeneralfeedback() {
 		return generalfeedback;
 	}
 
-	public String getType() {
+	/**
+	 * @return question type
+	 */
+	public final String getType() {
 		return type;
 	}
 
-	public String getQuestionText() {
+	public final String getQuestionText() {
 		return questionText;
 	}
 
-	public String getFormat() {
+	public final String getFormat() {
 		return format;
 	}
 
-	public String getImage() {
+	public final String getImage() {
 		return image;
 	}
 
-	public String getImage_64() {
+	public final String getImage_64() {
 		return image_64;
 	}
 
-	public int getDefaultGrade() {
+	public final int getDefaultGrade() {
 		return defaultGrade;
 	}
 
-	public double getPenalty() {
+	public final double getPenalty() {
 		return penalty;
 	}
 
-	public int isHidden() {
+	public final int isHidden() {
 		return hidden;
 	}
 
-	public int isShuffleAnswers() {
+	public final int isShuffleAnswers() {
 		return shuffleAnswers;
 	}
 
-	public ArrayList<Answer> getAnswers() {
+	public final ArrayList<Answer> getAnswers() {
 		return answers;
 	}
 
-	public ArrayList<Unit> getUnits() {
+	public final ArrayList<Unit> getUnits() {
 		return units;
 	}
 
-	public ArrayList<DatasetDefinition> getDatasetDefinitions() {
+	public final ArrayList<DatasetDefinition> getDatasetDefinitions() {
 		return datasetDefinitions;
 	}
 

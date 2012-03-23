@@ -22,6 +22,9 @@ public class Numerical extends Question {
 	private int hidden;
 	private int shuffleAnswers;
 	private List<Answer> answers = new ArrayList<Answer>();
+	/**
+	 * The type
+	 */
 	private String type;
 	private String image;
 	private String image_64;

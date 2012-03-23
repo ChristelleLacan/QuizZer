@@ -26,27 +26,33 @@ public class Category extends Question {
 	/**
 	 * Constructor.
 	 *
-	 * @param Ctext
+	 * @param cText the category text
 	 */
-	public Category(String Ctext) {
+	public Category(final String cText) {
 		super(name);
-		category = Ctext;
+		category = cText;
 		type = "category";
 	}
 
 	/**
-	 * toString
+	 * @return a string
 	 */
-	public String toString() {
+	public final String toString() {
 		return "\n----Ceci est une " + type + " : \n" + "category : "
 				+ category + "\n";
 	}
 
-	public String getCategory() {
+	/**
+	 * @return the category text
+	 */
+	public final String getCategory() {
 		return category;
 	}
 
-	public String getType() {
+	/**
+	 * @return the category type
+	 */
+	public final String getType() {
 		return type;
 	}
 

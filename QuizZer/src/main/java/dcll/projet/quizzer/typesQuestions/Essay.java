@@ -22,6 +22,9 @@ public class Essay extends Question {
 	private int shuffleAnswers;
 	private String generalfeedback;
 	private List<Answer> answers = new ArrayList<Answer>();
+	/**
+	 * The type
+	 */
 	private String type;
 	private String image;
 	private String image_64;

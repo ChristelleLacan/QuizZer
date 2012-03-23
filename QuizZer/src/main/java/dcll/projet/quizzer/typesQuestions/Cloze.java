@@ -10,20 +10,32 @@ import dcll.projet.quizzer.Question;
  */
 public class Cloze extends Question {
 
+	/**
+	 * The question text.
+	 */
 	private String questiontext;
+	/**
+	 * The question is shuffle or not ?
+	 */
 	private int shuffleanswers;
+	/**
+	 * The type cloze.
+	 */
 	private String type;
+	/**
+	 * The question feedback.
+	 */
 	private String generalfeedback;
 
 	/**
-	 * Constructor :
+	 * Constructor.
 	 * 
-	 * @param mName
-	 * @param mQuestionText
-	 * @param mShuffleanswers
+	 * @param mName The name of cloze
+	 * @param mQuestionText The question text
+	 * @param mShuffleanswers [0/1] shuffle or not shuffle
 	 */
-	public Cloze(String mName, String mQuestionText, int mShuffleanswers,
-			String mGeneralfeedback) {
+	public Cloze(final String mName, final String mQuestionText,
+			final int mShuffleanswers, final String mGeneralfeedback) {
 		super(mName);
 		questiontext = mQuestionText;
 		shuffleanswers = mShuffleanswers;
@@ -32,28 +44,40 @@ public class Cloze extends Question {
 	}
 
 	/**
-	 * toString
+	 * @return a string
 	 */
-	public String toString() {
+	public final String toString() {
 		return "\n----Ceci est une " + type + " : \n" + super.toString()
 				+ "questionsText : " + questiontext + "\n"
 				+ "shuffleanswers : " + shuffleanswers + "\n";
 
 	}
 
-	public String getGeneralfeedback() {
+	/**
+	 * @return general feedback
+	 */
+	public final String getGeneralfeedback() {
 		return generalfeedback;
 	}
 
-	public String getType() {
+	/**
+	 * @return type
+	 */
+	public final String getType() {
 		return type;
 	}
 
-	public String getQuestiontext() {
+	/**
+	 * @return question text
+	 */
+	public final String getQuestiontext() {
 		return questiontext;
 	}
 
-	public int isShuffleanswers() {
+	/**
+	 * @return is it shuffle or not ?
+	 */
+	public final int isShuffleanswers() {
 		return shuffleanswers;
 	}
 

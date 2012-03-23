@@ -20,6 +20,9 @@ public class Description extends Question {
 	private double penalty;
 	private int hidden;
 	private int shuffleAnswers;
+	/**
+	 * The type
+	 */
 	private String type;
 	private String image;
 	private String image_64;

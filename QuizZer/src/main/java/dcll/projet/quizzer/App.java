@@ -1,11 +1,15 @@
 package dcll.projet.quizzer;
 
 /**
- * API running
- * 
+ * API running.
  */
-public class App {
-	public static void main(String[] args) {
+public final class App {
+
+	/**
+	 * @param args
+	 *            arguments
+	 */
+	public static void main(final String[] args) {
 		String myFile = "../xmldoc/quiz.xml";
 		IxmlToJava myXmlToJavaParser = new XmlToJava();
 		Questionnaire myQuiz = myXmlToJavaParser.run(myFile);
@@ -15,5 +19,12 @@ public class App {
 		String fichier = "src/main/java/dcll/projet/xmldoc/JavaToXml.xml";
 		IjavaToXml myJavaToXmlParser = new JavaToXml();
 		myJavaToXmlParser.run(myQuiz, fichier);
+	}
+
+	/**
+	 * Private Constructor (Utilitary class).
+	 */
+	private App() {
+
 	}
 }
