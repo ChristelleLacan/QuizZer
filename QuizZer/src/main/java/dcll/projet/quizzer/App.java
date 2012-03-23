@@ -1,7 +1,7 @@
 package dcll.projet.quizzer;
 
 /**
- * Hello world!
+ * Fonctionnement de l'API
  * 
  */
 public class App {
