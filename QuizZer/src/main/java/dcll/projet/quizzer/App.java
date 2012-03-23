@@ -1,7 +1,7 @@
 package dcll.projet.quizzer;
 
 /**
- * Fonctionnement de l'API
+ * API running
  * 
  */
 public class App {
