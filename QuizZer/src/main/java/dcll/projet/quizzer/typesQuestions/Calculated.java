@@ -16,44 +16,95 @@ import dcll.projet.quizzer.typesQuestions.element.Unit;
 public class Calculated extends Question {
 
 	/**
-	 * The type
+	 * The type.
 	 */
 	private String type;
+	/**
+	 * Question text.
+	 */
 	private String questionText;
+	/**
+	 * The Format.
+	 */
 	private String format;
+	/**
+	 * The image path.
+	 */
 	private String image;
+	/**
+	 * The image.
+	 */
 	private String image_64;
+	/**
+	 * General Feedback.
+	 */
 	private String generalfeedback;
+	/**
+	 * The default grade.
+	 */
 	private int defaultGrade;
+	/**
+	 * The penalty.
+	 */
 	private double penalty;
+	/**
+	 * Hidden or not ?
+	 */
 	private int hidden;
+	/**
+	 * Shuffle or not ?
+	 */
 	private int shuffleAnswers;
+	/**
+	 * The answer list.
+	 */
 	private ArrayList<Answer> answers = new ArrayList<Answer>();
+	/**
+	 * The unit list.
+	 */
 	private ArrayList<Unit> units = new ArrayList<Unit>();
+	/**
+	 * The Dataset definition list.
+	 */
 	private ArrayList<DatasetDefinition> datasetDefinitions = new ArrayList<DatasetDefinition>();
 
 	/**
-	 * Constructor :
+	 * Constructor.
 	 * 
 	 * @param mName
+	 *            ..
 	 * @param mQuestionText
+	 *            ..
 	 * @param mFormat
+	 *            ..
 	 * @param mImage
+	 *            ..
 	 * @param mImage_64
+	 *            ..
 	 * @param mDefaultGrade
+	 *            ..
 	 * @param mPenalty
+	 *            ..
 	 * @param mHidden
+	 *            ..
 	 * @param mShuffleAnswers
+	 *            ..
 	 * @param mAnswers
+	 *            ..
 	 * @param mUnits
+	 *            ..
 	 * @param mDatasetDefinitions
+	 *            ..
+	 * @param mGeneralfeedback
+	 *            ..
 	 */
-	public Calculated(String mName, String mQuestionText, String mFormat,
-			String mImage, String mImage_64, int mDefaultGrade,
-			String mGeneralfeedback, double mPenalty, int mHidden,
-			int mShuffleAnswers, ArrayList<Answer> mAnswers,
-			ArrayList<Unit> mUnits,
-			ArrayList<DatasetDefinition> mDatasetDefinitions) {
+	public Calculated(final String mName, final String mQuestionText,
+			final String mFormat, final String mImage, final String mImage_64,
+			final int mDefaultGrade, final String mGeneralfeedback,
+			final double mPenalty, final int mHidden,
+			final int mShuffleAnswers, final ArrayList<Answer> mAnswers,
+			final ArrayList<Unit> mUnits,
+			final ArrayList<DatasetDefinition> mDatasetDefinitions) {
 		super(mName);
 		questionText = mQuestionText;
 		format = mFormat;
@@ -99,46 +150,79 @@ public class Calculated extends Question {
 		return type;
 	}
 
+	/**
+	 * @return question text
+	 */
 	public final String getQuestionText() {
 		return questionText;
 	}
 
+	/**
+	 * @return format
+	 */
 	public final String getFormat() {
 		return format;
 	}
 
+	/**
+	 * @return image
+	 */
 	public final String getImage() {
 		return image;
 	}
 
+	/**
+	 * @return image_64
+	 */
 	public final String getImage_64() {
 		return image_64;
 	}
 
+	/**
+	 * @return default grade
+	 */
 	public final int getDefaultGrade() {
 		return defaultGrade;
 	}
 
+	/**
+	 * @return penalty
+	 */
 	public final double getPenalty() {
 		return penalty;
 	}
 
+	/**
+	 * @return hidden
+	 */
 	public final int isHidden() {
 		return hidden;
 	}
 
+	/**
+	 * @return shuffle answers
+	 */
 	public final int isShuffleAnswers() {
 		return shuffleAnswers;
 	}
 
+	/**
+	 * @return Answers
+	 */
 	public final ArrayList<Answer> getAnswers() {
 		return answers;
 	}
 
+	/**
+	 * @return units
+ 	 */
 	public final ArrayList<Unit> getUnits() {
 		return units;
 	}
 
+	/**
+	 * @return datasetDefinitions
+	 */
 	public final ArrayList<DatasetDefinition> getDatasetDefinitions() {
 		return datasetDefinitions;
 	}
