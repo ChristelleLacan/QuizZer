@@ -2,12 +2,13 @@ package dcll.projet.quizzer.typesQuestions.element;
 
 /**
  * This class contains the definition of Unit used in Calculated questions.
- * 
+ *
  * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
- * 
+ *
  */
 public class Unit {
-	/**
+
+	/**.
 	 * the multiplier factor of the unit.
 	 */
 	private String multiplier;
@@ -18,7 +19,7 @@ public class Unit {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param mMultiplier the multiplier factor
 	 * @param mUnitName the unit name
 	 */
@@ -37,16 +38,16 @@ public class Unit {
 
 	/**
 	 * Getter Multiplier.
-	 * 
+	 *
 	 * @return multiplier
 	 */
 	public final String getMultiplier() {
 		return multiplier;
 	}
 
-	/**
+	/**.
 	 * Getter unitName
-	 * 
+	 *
 	 * @return unitName
 	 */
 	public final String getUnitName() {

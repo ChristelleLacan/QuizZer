@@ -2,12 +2,12 @@ package dcll.projet.quizzer.typesQuestions.element;
 
 import java.util.ArrayList;
 
-/**
+/**.
  * This class contains definition of DatasetDefinition : used in Calculated
  * Questions
- * 
+ *
  * @author Eros Luce, Clement Bardou, Christelle Lacan, Thierno Bah
- * 
+ *
  */
 public class DatasetDefinition {
 	private String name;
@@ -21,9 +21,9 @@ public class DatasetDefinition {
 	private ArrayList<DatasetItem> datasetItems = new ArrayList<DatasetItem>();
 	private String numberOfItems;
 
-	/**
+	/**.
 	 * Constructor :
-	 * 
+	 *
 	 * @param mName
 	 * @param mStatus
 	 * @param mType
@@ -51,8 +51,9 @@ public class DatasetDefinition {
 		numberOfItems = mNumberOfItems;
 	}
 
-	/**
+	/**.
 	 * toString
+	 * @return format to DatasetDefinition
 	 */
 	public String toString() {
 		return "\n-- Dataset Definition : " + "\n\tStatus : " + status
